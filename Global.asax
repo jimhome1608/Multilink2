@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="Multilink2.MvcApplication" Language="C#" %>

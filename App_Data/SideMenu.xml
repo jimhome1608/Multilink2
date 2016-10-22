@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu>
+  <group Text="Sales Activty">
+    <item Text="Web Enquiries" />
+    <item Text="Inpsection Results" />
+    <item Text="All Activity" />
+  </group>
+
+  <group Text="More">
+    <item Text="Weblink" Target = "_blank" NavigateUrl="http://www.multilink.com.au/webmultilink/index.php/users/login"  />
+    <item Text="Open Support" Target = "_blank" NavigateUrl="http://www.multilink.com.au/download/Support/"  />
+    
+  </group>
+</menu>
