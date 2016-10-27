@@ -186,6 +186,8 @@
     <Content Include="Views\Shared\_rootLayout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\vwInternetEnquiries.cshtml" />
+    <Content Include="Views\Home\vwInternetEnquiriesPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -202,9 +204,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AgentInfo.cs" />
-    <Compile Include="Models\EmployeeListSource.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Models\InMemoryModel.cs" />
     <Compile Include="Models\InternetEnquires.cs" />
     <Compile Include="Models\OFI_RESULTS_AGENTS.cs" />
     <Compile Include="Models\WEBLINK_USER_STATS01.cs" />

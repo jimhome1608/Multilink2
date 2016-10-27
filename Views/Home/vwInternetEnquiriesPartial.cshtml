@@ -1,0 +1,21 @@
+﻿@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "gvTypedListDataBinding";
+    settings.CallbackRouteValues = new { Controller = "Home", Action = "vwInternetEnquiriesPartial" };
+
+    settings.KeyFieldName = "address";
+
+    settings.Columns.Add("address");
+    settings.Columns.Add("count");
+    settings.SettingsPager.Visible = false;
+    settings.Settings.ShowGroupPanel = false;
+    settings.Settings.ShowFilterRow = false;
+    settings.SettingsBehavior.AllowSelectByRowClick = true;
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.Height = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.Settings.ShowVerticalScrollBar = true;
+    settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+    settings.ClientSideEvents.Init = "OnInit";
+    settings.ClientSideEvents.EndCallback = "OnEndCallback";
+
+}).Bind(Model).GetHtml()

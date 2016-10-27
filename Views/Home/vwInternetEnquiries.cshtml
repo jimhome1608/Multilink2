@@ -1,0 +1,22 @@
+﻿
+<script type="text/javascript">
+    function OnInit(s, e) {
+        AdjustSize();
+        ASPxClientUtils.AttachEventToElement(window, "resize", function (evt) {
+            AdjustSize();
+        });
+    }
+    function OnEndCallback(s, e) {
+        AdjustSize();
+    }
+    function AdjustSize() {
+        var height = document.documentElement.clientHeight-100;
+        gvTypedListDataBinding.SetHeight(height);
+    }
+
+</script>
+
+@model System.Collections.IEnumerable
+@*<br /><br />*@
+@Html.Partial("vwInternetEnquiriesPartial", Model)
+<br />

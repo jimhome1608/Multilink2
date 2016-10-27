@@ -1,3 +1,4 @@
+using DevExpress.Web.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,14 @@ namespace Multilink2.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            var model = new InternetEnquiresList();
-            model = readInternetEnquires();
-            return View("Index", model);
-        }
+        //public ActionResult Index()
+        //{
+        //    var model = new InternetEnquiresList();
+        //    model = readInternetEnquires();
+        //    return View("Index", model);
+        //}
+
+        
 
         protected OdbcConnection odbcConnection;
 
@@ -206,6 +209,21 @@ namespace Multilink2.Controllers
             }
         }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
 
+        public ActionResult vwInternetEnquiries()
+        {
+            if (Session["TypedListModel"] == null)
+                Session["TypedListModel"] = InMemoryModel.GetTypedListModel();
+
+            return View(Session["TypedListModel"]);
+        }
+        public ActionResult vwInternetEnquiriesPartial()
+        {
+            return PartialView(Session["TypedListModel"]);
+        }
     }
 }

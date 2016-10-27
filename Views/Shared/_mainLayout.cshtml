@@ -1,5 +1,15 @@
 @{ Layout = "~/Views/Shared/_rootLayout.cshtml"; }
 
+@Html.DevExpress().GetStyleSheets(
+new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }
+)
+@Html.DevExpress().GetScripts(
+new Script { ExtensionSuite = ExtensionSuite.Editors }
+)
+
+
+
+
 @Html.DevExpress().Splitter(settings => {
     settings.Name = "ContentSplitter";
     settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
