@@ -1,4 +1,5 @@
 ﻿
+
 @Html.DevExpress().GridView(settings =>
 {
     settings.Name = "gvTypedListDataBinding";
@@ -11,21 +12,49 @@
 
     settings.Columns.Add("total_count");
     settings.Columns[1].Caption = "Enquires";
-    
+
     settings.Columns.Add("rea_count");
     settings.Columns[2].Caption = "RealEstate";
     settings.Columns.Add("dca_count");
+    //settings.Settings.ShowHeaderFilterButton = true;
     settings.Columns[3].Caption = "Domain";
     settings.Columns.Add("rvw_count");
     settings.Columns[4].Caption = "RealEstateView";
 
 
+    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Count, "address");
+    settings.TotalSummary[0].DisplayFormat = "Current Listings <br />{0}";
+
+    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "total_count");
+    settings.TotalSummary[1].DisplayFormat = "Total Enquiries <br />{0}";
+
+    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "rea_count");
+    settings.TotalSummary[2].DisplayFormat = "From REA: {0}";
+    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Average, "rea_count");
+    settings.TotalSummary[3].DisplayFormat = "Average: {0:n2}";
+
+    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "dca_count");
+    settings.TotalSummary[4].DisplayFormat = "From DCA: {0}";
+    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Average, "dca_count");
+    settings.TotalSummary[5].DisplayFormat = "Average: {0:n2}";
+
+    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "rvw_count");
+    settings.TotalSummary[6].DisplayFormat = "From RVW: {0}";
+    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Average, "rvw_count");
+    settings.TotalSummary[7].DisplayFormat = "Average: {0:n2}";
+
+
+
+
+
+    //settings.Settings.su
+    settings.Settings.ShowFooter = true;
 
     settings.SettingsPager.Visible = false;
     settings.Settings.ShowGroupPanel = false;
     settings.Settings.ShowFilterRow = false;
     settings.SettingsBehavior.AllowSelectByRowClick = true;
-    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(98);
     settings.Height = System.Web.UI.WebControls.Unit.Percentage(100);
     settings.Settings.ShowVerticalScrollBar = true;
     settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;

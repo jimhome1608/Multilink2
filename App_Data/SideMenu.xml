@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu>
   <group Text="Sales Activty">
-    <item Text="Web Enquiries (490)" NavigateUrl="~/Home/vwInternetEnquiries" />
+    <item Text="Web Enquiries (620)" NavigateUrl="~/Home/vwInternetEnquiries" />
     <item Text="Inpsection Results" />
     <item Text="All Activity" />
   </group>
