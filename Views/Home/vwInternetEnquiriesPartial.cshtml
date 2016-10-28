@@ -1,4 +1,5 @@
-﻿@Html.DevExpress().GridView(settings =>
+﻿
+@Html.DevExpress().GridView(settings =>
 {
     settings.Name = "gvTypedListDataBinding";
     settings.CallbackRouteValues = new { Controller = "Home", Action = "vwInternetEnquiriesPartial" };
@@ -6,7 +7,20 @@
     settings.KeyFieldName = "address";
 
     settings.Columns.Add("address");
-    settings.Columns.Add("count");
+    settings.Columns[0].Caption = "Property";
+
+    settings.Columns.Add("total_count");
+    settings.Columns[1].Caption = "Enquires";
+    
+    settings.Columns.Add("rea_count");
+    settings.Columns[2].Caption = "RealEstate";
+    settings.Columns.Add("dca_count");
+    settings.Columns[3].Caption = "Domain";
+    settings.Columns.Add("rvw_count");
+    settings.Columns[4].Caption = "RealEstateView";
+
+
+
     settings.SettingsPager.Visible = false;
     settings.Settings.ShowGroupPanel = false;
     settings.Settings.ShowFilterRow = false;

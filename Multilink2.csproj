@@ -163,6 +163,7 @@
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="packages.config" />
     <None Include="Multilink2.pubxml" />
+    <None Include="Properties\PublishProfiles\Multilink2.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
@@ -204,7 +205,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AgentInfo.cs" />
-    <Compile Include="Models\InMemoryModel.cs" />
     <Compile Include="Models\InternetEnquires.cs" />
     <Compile Include="Models\OFI_RESULTS_AGENTS.cs" />
     <Compile Include="Models\WEBLINK_USER_STATS01.cs" />
