@@ -3,47 +3,30 @@
 <html>
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 
-    
-                @Html.DevExpress().GetStyleSheets( 
-            new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout }
+
+    @Html.DevExpress().GetStyleSheets(
+            new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+new StyleSheet { ExtensionSuite = ExtensionSuite.GridView }
         )
-        @Html.DevExpress().GetScripts( 
-            new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout }
+    @Html.DevExpress().GetScripts(
+            new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+new Script { ExtensionSuite = ExtensionSuite.GridView }
         )
-    
+
 </head>
 <body>
-    @Html.DevExpress().Splitter(settings => {
-    settings.Name = "MainSplitter";
-    settings.AllowResize = false;
-    settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
-    settings.FullscreenMode = true;
-    settings.SeparatorVisible = false;
-    //settings.Styles.Pane.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
-    settings.Styles.Pane.Paddings.Padding = System.Web.UI.WebControls.Unit.Pixel(0);
 
-    settings.Panes.Add(pane => {
-        pane.Name = "Header";
-        pane.AutoHeight = true;
-        pane.PaneStyle.BorderBottom.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
-        pane.PaneStyle.CssClass = "headerPane";
-        pane.SetContent(() => {
-            Html.RenderPartial("HeaderPartialView");
-        });
-    });
-
-    settings.Panes.Add(pane => {
-        pane.Name = "Content";
-        pane.PaneStyle.CssClass = "mainContentPane";
-        pane.MinSize = System.Web.UI.WebControls.Unit.Pixel(375);
-        pane.PaneStyle.BackColor = System.Drawing.Color.White;
-        //pane.PaneStyle.BorderBottom.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
-        pane.SetContent(RenderBody().ToHtmlString());
-    });
-
+    @Html.DevExpress().Panel(settings =>
+{
+    settings.Name = "MainPane";
+    settings.ControlStyle.CssClass = "mainContentPane";
+    settings.SetContent(RenderBody().ToHtmlString());
 }).GetHtml()
+
+
 </body>
 </html>
