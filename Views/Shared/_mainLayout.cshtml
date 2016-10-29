@@ -1,17 +1,26 @@
 @{ Layout = "~/Views/Shared/_rootLayout.cshtml"; }
 
-<div class="headerTop">
-        <div class="panel panel-default" style="background-color:teal;color:white;font-size:larger;">
-             Noel Jones Box Hill - Internet Enquiries
-        </div>
-</div>
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+
+@Html.DevExpress().Panel(settings =>
+{
+     settings.Name = "Panel";
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(98);
+    settings.SetContent(@"<span style=""padding-left:10px;padding-right:10px;font-size:18px;background-color:#293952;color:white;border-radius:5px 5px;""> Noel Jones Box Hill</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style=""padding-left:10px;padding-right:10px;font-size:18px;background-color:#621A4B;color:white;border-radius:5px 5px""> Web Enquiries</span>");
+    settings.FixedPosition = DevExpress.Web.PanelFixedPosition.WindowTop;
+    settings.SettingsCollapsing.ExpandEffect = DevExpress.Web.PanelExpandEffect.Auto;
+}).GetHtml()
+
+
+
 
 @Html.DevExpress().Panel(settings =>
 {
     settings.Name = "LeftPane";
     settings.FixedPosition = PanelFixedPosition.WindowLeft;
     settings.Collapsible = true;
-    settings.SettingsAdaptivity.CollapseAtWindowInnerWidth = 1023;
+    settings.SettingsAdaptivity.CollapseAtWindowInnerWidth = 0;
     settings.ControlStyle.CssClass = "leftPane";
     settings.Styles.Panel.CssClass = "panel";
     settings.SetContent(() =>
