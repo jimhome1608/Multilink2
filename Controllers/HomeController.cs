@@ -21,12 +21,30 @@ namespace Multilink2.Controllers
         {
             if (Session["TypedListModel"] == null)
                 Session["TypedListModel"] = WebEnquires.GetList();
-
+            ViewBag.UserLocation = "Web Enquiries";
+            ViewBag.OfficeName = "Noel Jones - Box Hill";
             return View(Session["TypedListModel"]);
         }
         public ActionResult vwInternetEnquiriesPartial()
         {
             return PartialView(Session["TypedListModel"]);
         }
+
+        public ActionResult vwHomePage()
+        {
+            ViewBag.UserLocation = "Inpsection Result";
+            ViewBag.OfficeName = "Noel Jones - Box Hill";
+            return View();
+        }
+
+        public ActionResult vwAllActivity()
+        {
+            ViewBag.UserLocation = "All Acvitivity";
+            ViewBag.OfficeName = "Noel Jones - Box Hill";
+            return View("vwHomePage");
+        }
+
+
+
     }
 }

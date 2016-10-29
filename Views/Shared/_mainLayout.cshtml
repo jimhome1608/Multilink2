@@ -5,9 +5,10 @@
 
 @Html.DevExpress().Panel(settings =>
 {
-     settings.Name = "Panel";
+    settings.Name = "Panel";
     settings.Width = System.Web.UI.WebControls.Unit.Percentage(98);
-    settings.SetContent(@"<span style=""padding-left:10px;padding-right:10px;font-size:18px;background-color:#293952;color:white;border-radius:5px 5px;""> Noel Jones Box Hill</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style=""padding-left:10px;padding-right:10px;font-size:18px;background-color:#621A4B;color:white;border-radius:5px 5px""> Web Enquiries</span>");
+    settings.SetContent(@"<span style=""padding-left:10px;padding-right:10px;font-size:18px;background-color:#293952;color:white;border-radius:5px 5px;""> "+ @ViewBag.OfficeName + @"</span> &nbsp;&nbsp;&nbsp;&nbsp;
+       <span style=""padding-left:10px;padding-right:10px;font-size:18px;background-color:#621A4B;color:white;border-radius:5px 5px""> " + @ViewBag.UserLocation + "</span>");
     settings.FixedPosition = DevExpress.Web.PanelFixedPosition.WindowTop;
     settings.SettingsCollapsing.ExpandEffect = DevExpress.Web.PanelExpandEffect.Auto;
 }).GetHtml()
