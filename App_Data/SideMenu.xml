@@ -2,7 +2,7 @@
 <menu>
   <item Text="All Activity"  NavigateUrl="~/Home/vwAllActivity"/>
   <item Text="Web Enquiries" id="mnuWebEnquires"  NavigateUrl="~/Home/vwInternetEnquiries" />
-  <item Text="Inpsection Result"   NavigateUrl="~/Home/vwHomePage" />
+  <item Text="Inspections"   NavigateUrl="~/Home/vwHomePage" />
 
   <group Text="More">
     <item Text="Weblink" Target = "_blank" NavigateUrl="http://www.multilink.com.au/webmultilink/index.php/users/login"  />

@@ -32,14 +32,14 @@ namespace Multilink2.Controllers
 
         public ActionResult vwHomePage()
         {
-            ViewBag.UserLocation = "Inpsection Result";
+            ViewBag.UserLocation = "Inpsections";
             ViewBag.OfficeName = "Noel Jones - Box Hill";
             return View();
         }
 
         public ActionResult vwAllActivity()
         {
-            ViewBag.UserLocation = "All Acvitivity";
+            ViewBag.UserLocation = "All Acvtivity";
             ViewBag.OfficeName = "Noel Jones - Box Hill";
             return View("vwHomePage");
         }
