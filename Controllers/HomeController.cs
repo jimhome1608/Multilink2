@@ -17,11 +17,11 @@ namespace Multilink2.Controllers
             return View();
         }
 
-        public ActionResult vwInternetEnquiries()
+        public ActionResult vwInternetEnquiries(String SalesMethod)
         {
             if (Session["TypedListModel"] == null)
                 Session["TypedListModel"] = WebEnquires.GetList();
-            ViewBag.UserLocation = "Web Enquiries";
+            ViewBag.UserLocation = "Web Enquiries "+ SalesMethod;
             ViewBag.OfficeName = "Noel Jones - Box Hill";
             return View(Session["TypedListModel"]);
         }
@@ -32,16 +32,23 @@ namespace Multilink2.Controllers
 
         public ActionResult vwHomePage()
         {
-            ViewBag.UserLocation = "Inpsections";
+            ViewBag.UserLocation = "Inspections";
             ViewBag.OfficeName = "Noel Jones - Box Hill";
             return View();
         }
 
         public ActionResult vwAllActivity()
         {
-            ViewBag.UserLocation = "All Acvtivity";
+            ViewBag.UserLocation = "Enquiries and Inspections";
             ViewBag.OfficeName = "Noel Jones - Box Hill";
             return View("vwHomePage");
+        }
+
+        public ActionResult Video()
+        {
+            ViewBag.UserLocation = "Intro. Video";
+            ViewBag.OfficeName = "Noel Jones - Box Hill";
+            return View();
         }
 
 

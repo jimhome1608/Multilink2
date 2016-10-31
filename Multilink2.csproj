@@ -127,7 +127,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SideMenu.xml" />
+    <Content Include="App_Data\SideMenu.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\TopMenu.xml" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -168,6 +170,7 @@
     <None Include="Properties\PublishProfiles\Multilink2.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
+    <Content Include="video\Multilink2.mp4" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
@@ -192,6 +195,7 @@
     <Content Include="Views\Home\vwInternetEnquiries.cshtml" />
     <Content Include="Views\Home\vwInternetEnquiriesPartial.cshtml" />
     <Content Include="Views\Home\vwHomePage.cshtml" />
+    <Content Include="Views\Home\Video.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

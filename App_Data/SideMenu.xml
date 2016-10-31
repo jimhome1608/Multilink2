@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu>
-  <item Text="All Activity"  NavigateUrl="~/Home/vwAllActivity"/>
-  <item Text="Web Enquiries" id="mnuWebEnquires"  NavigateUrl="~/Home/vwInternetEnquiries" />
-  <item Text="Inspections"   NavigateUrl="~/Home/vwHomePage" />
-
-  <group Text="More">
-    <item Text="Weblink" Target = "_blank" NavigateUrl="http://www.multilink.com.au/webmultilink/index.php/users/login"  />
-    <item Text="Open Support" Target = "_blank" NavigateUrl="http://www.multilink.com.au/download/Support/"  />
-    
+  <group Text="Enquiries - Web">
+    <item Text="Sales"  NavigateUrl="~/Home/vwInternetEnquiries?SalesMethod=(Sales)" />
+    <item Text="Rentals"  NavigateUrl="~/Home/vwInternetEnquiries?SalesMethod=(Rentals)" />
+    <item Text="Both Sales  Rentals"  NavigateUrl="~/Home/vwInternetEnquiries?SalesMethod=(Both Sales and Rentals)" />
   </group>
+  
+  <item Text="Inspections"   NavigateUrl="~/Home/vwHomePage" />
+  <item Text="Enquiries and Inspections"  NavigateUrl="~/Home/vwAllActivity" />
+  <item Text="Intro. Video"  NavigateUrl="~/Home/Video" />
+
+  
 </menu>
