@@ -19,9 +19,12 @@ namespace Multilink2.Controllers
 
         public ActionResult vwInternetEnquiries(String SalesMethod)
         {
-            if (Session["TypedListModel"] == null)
-                Session["TypedListModel"] = WebEnquires.GetList();
-            ViewBag.UserLocation = "Web Enquiries "+ SalesMethod;
+            if ((Session["TypedListModel"] == null) || (Session["SalesMethod"] != SalesMethod))
+               Session["TypedListModel"] = WebEnquires.GetList(SalesMethod);
+            Session["SalesMethod"] = SalesMethod;
+            SalesMethod = SalesMethod.Replace("and", "&");
+            ViewBag.UserLocation = "Web Enquiries";
+            ViewBag.UserLocation2 = SalesMethod;
             ViewBag.OfficeName = "Noel Jones - Box Hill";
             return View(Session["TypedListModel"]);
         }

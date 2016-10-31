@@ -1,17 +1,62 @@
 @{ Layout = "~/Views/Shared/_rootLayout.cshtml"; }
 
-<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<link href="~/fonts/font-awesome.css" rel="stylesheet" />
 
-@Html.DevExpress().Panel(settings =>
+<style>
+    #firstnode {
+        padding-left:10px;
+        padding-right:10px;
+        font-size:18px;
+        background-color:#293952;
+        color:white;
+        border-radius:5px 5px
+    }
+    #secondnode {
+       padding-left:10px;
+       padding-right:10px;
+       font-size:18px;
+       background-color:#621A4B;
+       color:white;
+       border-radius:5px 5px
+    }
+    #thirdnode {
+       padding-left:10px;
+       padding-right:10px;
+       font-size:18px;
+       background-color:darkgrey;
+       color:white;
+       border-radius:5px 5px
+    }
+
+</style>
+
+@if(@ViewBag.UserLocation2 != null)
 {
-    settings.Name = "Panel";
-    settings.Width = System.Web.UI.WebControls.Unit.Percentage(98);
-    settings.SetContent(@"<span style=""padding-left:10px;padding-right:10px;font-size:18px;background-color:#293952;color:white;border-radius:5px 5px;""> "+ @ViewBag.OfficeName + @"</span> &nbsp;&nbsp;&nbsp;&nbsp;
-       <span style=""padding-left:10px;padding-right:10px;font-size:18px;background-color:#621A4B;color:white;border-radius:5px 5px""> " + @ViewBag.UserLocation + "</span>");
-    settings.FixedPosition = DevExpress.Web.PanelFixedPosition.WindowTop;
-    settings.SettingsCollapsing.ExpandEffect = DevExpress.Web.PanelExpandEffect.Auto;
-}).GetHtml()
+    @Html.DevExpress().Panel(settings =>
+    {
+        settings.Name = "Panel";
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(98);
+        settings.SetContent(@"<span id=""firstnode""> " + @ViewBag.OfficeName + "</span> <i class='fa fa-arrow-right' aria-hidden='true'></i>"
+                         + @"&nbsp;<span id=""secondnode""> " + @ViewBag.UserLocation + "</span> <i class='fa fa-arrow-right' aria-hidden='true'></i>"
+                         + @" &nbsp;<span id=""thirdnode""> " + @ViewBag.UserLocation2 + "</span>");
+        settings.FixedPosition = DevExpress.Web.PanelFixedPosition.WindowTop;
+        settings.SettingsCollapsing.ExpandEffect = DevExpress.Web.PanelExpandEffect.Auto;
+    }).GetHtml()
+}
+else
+{
+    @Html.DevExpress().Panel(settings =>
+    {
+        settings.Name = "Panel";
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(98);
+        settings.SetContent(@"<span id=""firstnode""> " + @ViewBag.OfficeName + "</span> <i class='fa fa-arrow-right' aria-hidden='true'></i>"
+                         + @"&nbsp;<span id=""secondnode""> " + @ViewBag.UserLocation + "</span>");
+        settings.FixedPosition = DevExpress.Web.PanelFixedPosition.WindowTop;
+        settings.SettingsCollapsing.ExpandEffect = DevExpress.Web.PanelExpandEffect.Auto;
+    }).GetHtml()
+
+}
+
 
 
 

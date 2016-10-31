@@ -20,7 +20,7 @@
     settings.Columns[1].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
     settings.Columns[1].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[1].HeaderStyle.ForeColor = System.Drawing.Color.White;
-    settings.Columns[1].HeaderStyle.Font.Size = 10;
+    settings.Columns[1].HeaderStyle.Font.Size = 12;
 
 
     settings.Columns.Add("total_count");
@@ -51,7 +51,14 @@
     settings.Columns[5].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[5].HeaderStyle.Font.Size = 12;
 
-    
+    settings.Columns.Add("sales_method");
+    settings.Columns[6].Caption = "Authority";
+    settings.Columns[6].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
+    settings.Columns[6].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
+    settings.Columns[6].HeaderStyle.ForeColor = System.Drawing.Color.White;
+    settings.Columns[6].HeaderStyle.Font.Size = 10;
+
+
 
 
     settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Count, "address");
