@@ -37,7 +37,7 @@ namespace Multilink2.Controllers
                     _rvw_count = _rvw_count + _WebEnquires.rvw_count;
                     _property_count++;
                 }
-                ViewBag.PropertiesCaption = "Property<br /> <span class='percent_used'> " + String.Format(" {0:0} Current Listings", _property_count);
+                ViewBag.PropertiesCaption = "Listings<br /> <span class='percent_used'> " + String.Format(" {0:0} Current", _property_count);
                 ViewBag.AgentsCaption = "Agents<br /> <span class='percent_used'> " + String.Format("{0:0} Managing", _distinct_managers);
                 ViewBag.EnquiresCaption = "Enquiries<br /> <span class='percent_used'> " + String.Format("Total: {0:0}", _total_count);
                 ViewBag.ReaCaption = "REA<br /> <span class='percent_used'> " + String.Format("{0:0.0}%", _rea_count/_total_count*100);
@@ -67,6 +67,7 @@ namespace Multilink2.Controllers
             ViewBag.ReaCaption = Session["ReaCaption"];
             ViewBag.DcaCaption = Session["DcaCaption"];
             ViewBag.RvwCaption = Session["RvwCaption"];
+            ViewBag.PropertiesCaption = Session["PropertiesCaption"];
             return PartialView(Session["TypedListModel"]);
         }
 

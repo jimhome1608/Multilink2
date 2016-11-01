@@ -12,6 +12,10 @@
     function AdjustSize() {
         var height = document.documentElement.clientHeight-40;
         gvTypedListDataBinding.SetHeight(height);
+        var width = document.documentElement.clientWidth-40;
+        if (width < 900)
+            width = 900
+        gvTypedListDataBinding.SetWidth(width);
     }   
 </script>
 

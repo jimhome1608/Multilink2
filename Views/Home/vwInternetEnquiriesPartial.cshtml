@@ -51,12 +51,28 @@
     settings.Columns[5].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[5].HeaderStyle.Font.Size = 10;
 
-    settings.Columns.Add("sales_method");
-    settings.Columns[6].Caption = "Authority";
-    settings.Columns[6].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
+    settings.Columns.Add("days_on_web");
+    settings.Columns[6].Caption = "Days Listed<br /><i class='fa fa-calendar' aria-hidden='true'>";
+    settings.Columns[6].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[6].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[6].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[6].HeaderStyle.Font.Size = 10;
+
+    settings.Columns.Add("enquiries_per_day");
+    settings.Columns[7].Caption = "Enq. Per Day.<br /><i class='fa fa-question-circle-o' aria-hidden='true'></i>";
+    settings.Columns[7].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
+    settings.Columns[7].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
+    settings.Columns[7].HeaderStyle.ForeColor = System.Drawing.Color.White;
+    settings.Columns[7].HeaderStyle.Font.Size = 10;
+
+
+
+    settings.Columns.Add("sales_method");
+    settings.Columns[8].Caption = "Authority";
+    settings.Columns[8].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
+    settings.Columns[8].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
+    settings.Columns[8].HeaderStyle.ForeColor = System.Drawing.Color.White;
+    settings.Columns[8].HeaderStyle.Font.Size = 10;
 
 
 
@@ -84,6 +100,11 @@
     //settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Average, "rvw_count");
     //settings.TotalSummary[8].DisplayFormat = "Avg: {0:n2}";
 
+    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "days_on_web");
+    settings.TotalSummary[4].DisplayFormat = "Total Days: {0}";
+
+
+
     settings.Styles.Footer.Font.Bold = false;
 
 
@@ -96,7 +117,7 @@
     settings.SettingsBehavior.AllowSelectByRowClick = true;
     settings.Width = System.Web.UI.WebControls.Unit.Percentage(98);
     //settings.Width = System.Web.UI.WebControls.Unit.Pixel(800);
-    settings.Height = System.Web.UI.WebControls.Unit.Percentage(100);
+    //settings.Height = System.Web.UI.WebControls.Unit.Percentage(100);
     settings.Settings.ShowVerticalScrollBar = true;
     settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
     settings.ClientSideEvents.Init = "OnInit";
