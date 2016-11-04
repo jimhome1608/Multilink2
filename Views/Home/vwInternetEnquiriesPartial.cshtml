@@ -51,28 +51,35 @@
     settings.Columns[5].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[5].HeaderStyle.Font.Size = 10;
 
-    settings.Columns.Add("days_on_web");
-    settings.Columns[6].Caption = "Days Listed<br /><i class='fa fa-calendar' aria-hidden='true'>";
+    settings.Columns.Add("homely_count");
+    settings.Columns[6].Caption = ViewBag.HomelyCaption;// = "Homely";
     settings.Columns[6].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[6].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[6].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[6].HeaderStyle.Font.Size = 10;
 
-    settings.Columns.Add("enquiries_per_day");
-    settings.Columns[7].Caption = "Enq. Per Day.<br /><i class='fa fa-question-circle-o' aria-hidden='true'></i>";
+    settings.Columns.Add("days_on_web");
+    settings.Columns[7].Caption = "Days Listed<br /><i class='fa fa-calendar' aria-hidden='true'>";
     settings.Columns[7].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[7].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[7].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[7].HeaderStyle.Font.Size = 10;
 
-
-
-    settings.Columns.Add("sales_method");
-    settings.Columns[8].Caption = "Authority";
-    settings.Columns[8].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
+    settings.Columns.Add("enquiries_per_day");
+    settings.Columns[8].Caption = "Enq. Per Day.<br /><i class='fa fa-question-circle-o' aria-hidden='true'></i>";
+    settings.Columns[8].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[8].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[8].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[8].HeaderStyle.Font.Size = 10;
+
+
+
+    settings.Columns.Add("sales_method");
+    settings.Columns[9].Caption = "Authority";
+    settings.Columns[9].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
+    settings.Columns[9].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
+    settings.Columns[9].HeaderStyle.ForeColor = System.Drawing.Color.White;
+    settings.Columns[9].HeaderStyle.Font.Size = 10;
 
 
 
