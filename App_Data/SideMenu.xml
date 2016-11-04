@@ -3,12 +3,12 @@
   <group Text="Internet Enquiries">
     <item Text="Sales"  NavigateUrl="~/Home/vwInternetEnquiries/Sales" />
     <item Text="Rentals"  NavigateUrl="~/Home/vwInternetEnquiries/Rentals" />
-    <item Text="Sales &amp; Rentals"  NavigateUrl="~/Home/vwInternetEnquiries/ Sales and Rentals" />
+    <item Text="Sales &amp; Rentals"  NavigateUrl="~/Home/vwInternetEnquiries/Sales and Rentals" />
   </group>
-  <group Text="Internet Listing Info." >
-    <item Text="Sales"  NavigateUrl="~/Home/vwHomePage"  />
-    <item Text="Rentals"  NavigateUrl="~/Home/vwHomePage" />
-    <item Text="Sales &amp; Rentals"  NavigateUrl="~/Home/vwHomePage" />
+  <group Text="Internet Listings." >
+    <item Text="Sales"  NavigateUrl="~/Home/vwhowLongONREA/Sales"  />
+    <item Text="Rentals"  NavigateUrl="~/Home/vwhowLongONREA/Rentals" />
+    <item Text="Sales &amp; Rentals"  NavigateUrl="~/Home/vwhowLongONREA/Sales and Rentals" />
   </group>
   
     

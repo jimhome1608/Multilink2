@@ -210,6 +210,8 @@
     <Content Include="Views\Home\vwInternetEnquiriesPartial.cshtml" />
     <Content Include="Views\Home\vwHomePage.cshtml" />
     <Content Include="Views\Home\Video.cshtml" />
+    <Content Include="Views\Home\vwhowLongONREA.cshtml" />
+    <Content Include="Views\Home\vwhowLongONREAPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -226,6 +228,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AgentInfo.cs" />
+    <Compile Include="Models\DB.cs" />
+    <Compile Include="Models\howLongONREA.cs" />
     <Compile Include="Models\InternetEnquires.cs" />
     <Compile Include="Models\OFI_RESULTS_AGENTS.cs" />
     <Compile Include="Models\WEBLINK_USER_STATS01.cs" />

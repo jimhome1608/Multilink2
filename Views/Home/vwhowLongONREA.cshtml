@@ -1,0 +1,39 @@
+﻿
+<script type="text/javascript">
+    function OnInit(s, e) {
+        AdjustSize();
+        ASPxClientUtils.AttachEventToElement(window, "resize", function (evt) {
+            AdjustSize();
+        });
+    }
+    function OnEndCallback(s, e) {
+        AdjustSize();
+    }
+    function AdjustSize() {
+        var height = document.documentElement.clientHeight-40;
+        gvTypedListDataBinding.SetHeight(height);
+        var width = document.documentElement.clientWidth-40;
+        if (width < 900)
+            width = 900
+        gvTypedListDataBinding.SetWidth(width);
+    }
+</script>
+
+<style>
+    .percent_used {
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        font-size: 12px;
+        background-color: white;
+        color: black;
+        border-radius: 2px 2px;
+    }
+</style>
+
+
+@model System.Collections.IEnumerable
+@*<br /><br />*@
+@Html.Partial("vwhowLongONREAPartial", Model)
+<br />
