@@ -1,72 +1,72 @@
 ﻿
 
-
 @Html.DevExpress().GridView(settings =>
 {
     settings.Name = "gvTypedListDataBinding";
-    settings.CallbackRouteValues = new { Controller = "Home", Action = "vwInternetEnquiriesPartial" };
+    settings.CallbackRouteValues = new { Controller = "Home", Action = "vwhowLongONREAPartial" };
 
     settings.KeyFieldName = "address";
 
     settings.Columns.Add("address");
-    settings.Columns[0].Caption = ViewBag.PropertiesCaption;// "Property";
+    settings.Columns[0].Caption =  "Property";
     settings.Columns[0].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[0].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[0].HeaderStyle.Font.Size = 10;
     settings.Columns[0].FooterCellStyle.HorizontalAlign = HorizontalAlign.Right;
 
-    settings.Columns.Add("manager");
-    settings.Columns[1].Caption = ViewBag.AgentsCaption;//"Agent";
+    settings.Columns.Add("suburb");
+    settings.Columns[1].Caption = "suburb";
     settings.Columns[1].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
     settings.Columns[1].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[1].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[1].HeaderStyle.Font.Size = 10;
 
 
-    settings.Columns.Add("total_count");
-    settings.Columns[2].Caption = ViewBag.EnquiresCaption;// "Enquiries";
+
+    settings.Columns.Add("rea_start");
+    settings.Columns[2].Caption = "rea_start";
     settings.Columns[2].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[2].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[2].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[2].HeaderStyle.Font.Size = 10;
 
-    settings.Columns.Add("rea_count");
-    settings.Columns[3].Caption = ViewBag.ReaCaption;// "REA" + ViewBag.UserLocation;
+    settings.Columns.Add("days_on_rea");
+    settings.Columns[3].Caption = "days_on_rea";
     settings.Columns[3].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[3].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[3].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[3].HeaderStyle.Font.Size = 10;
 
-    settings.Columns.Add("dca_count");
-    settings.Columns[4].Caption = ViewBag.DcaCaption;// = "DCA";
+    settings.Columns.Add("dca_start");
+    settings.Columns[4].Caption = "dca_start";
     settings.Columns[4].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[4].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[4].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[3].HeaderStyle.Font.Size = 10;
 
-    settings.Columns.Add("rvw_count");
-    settings.Columns[5].Caption = ViewBag.RvwCaption;// = "RVW";
+    settings.Columns.Add("days_on_dca");
+    settings.Columns[5].Caption = "days_on_dca";
     settings.Columns[5].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[5].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[5].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[5].HeaderStyle.Font.Size = 10;
 
-    settings.Columns.Add("homely_count");
-    settings.Columns[6].Caption = ViewBag.HomelyCaption;// = "Homely";
+    settings.Columns.Add("lister");
+    settings.Columns[6].Caption = "lister";
     settings.Columns[6].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[6].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[6].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[6].HeaderStyle.Font.Size = 10;
 
-    settings.Columns.Add("days_on_web");
-    settings.Columns[7].Caption = "Days Listed<br /><i class='fa fa-calendar' aria-hidden='true'>";
+    settings.Columns.Add("manager");
+    settings.Columns[7].Caption = "manager";
     settings.Columns[7].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[7].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[7].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[7].HeaderStyle.Font.Size = 10;
 
-    settings.Columns.Add("enquiries_per_day");
-    settings.Columns[8].Caption = "Enq. Per Day.<br /><i class='fa fa-question-circle-o' aria-hidden='true'></i>";
+    settings.Columns.Add("sales_method");
+    settings.Columns[8].Caption = "sales_method";
     settings.Columns[8].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[8].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[8].HeaderStyle.ForeColor = System.Drawing.Color.White;
@@ -74,49 +74,11 @@
 
 
 
-    settings.Columns.Add("sales_method");
-    settings.Columns[9].Caption = "Authority";
-    settings.Columns[9].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
-    settings.Columns[9].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
-    settings.Columns[9].HeaderStyle.ForeColor = System.Drawing.Color.White;
-    settings.Columns[9].HeaderStyle.Font.Size = 10;
 
-
-
-
-    //settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Count, "address");
-    //settings.TotalSummary[0].DisplayFormat = "{0} Current<br />Listings";
-
-    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "total_count");
-    settings.TotalSummary[0].DisplayFormat = "Total: {0}";
-    //settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Average, "total_count");
-    //ettings.TotalSummary[2].DisplayFormat = "Avg: {0:n2}";
-
-    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "rea_count");
-    settings.TotalSummary[1].DisplayFormat = "REA: {0}";
-    //settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Average, "rea_count");
-    //settings.TotalSummary[4].DisplayFormat = "Avg: {0:n2}";
-
-    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "dca_count");
-    settings.TotalSummary[2].DisplayFormat = "DCA: {0}";
-    //settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Average, "dca_count");
-    //settings.TotalSummary[6].DisplayFormat = "Avg: {0:n2}";
-
-    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "rvw_count");
-    settings.TotalSummary[3].DisplayFormat = "RVW: {0}";
-    //settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Average, "rvw_count");
-    //settings.TotalSummary[8].DisplayFormat = "Avg: {0:n2}";
-
-    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "days_on_web");
-    settings.TotalSummary[4].DisplayFormat = "Total Days: {0}";
-
-
-
-    settings.Styles.Footer.Font.Bold = false;
 
 
     //settings.Settings.su
-    settings.Settings.ShowFooter = true;
+    settings.Settings.ShowFooter = false;
 
     settings.SettingsPager.Visible = false;
     settings.Settings.ShowGroupPanel = false;
@@ -125,10 +87,10 @@
     settings.Width = System.Web.UI.WebControls.Unit.Percentage(98);
     //settings.Width = System.Web.UI.WebControls.Unit.Pixel(800);
     //settings.Height = System.Web.UI.WebControls.Unit.Percentage(100);
-    settings.Settings.ShowVerticalScrollBar = true;
-    settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
     settings.ClientSideEvents.Init = "OnInit";
     settings.ClientSideEvents.EndCallback = "OnEndCallback";
+    settings.Settings.ShowVerticalScrollBar = true;
+    settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
     settings.HtmlFooterCellPrepared = (sender, e) =>
     {
         e.Cell.BackColor = System.Drawing.Color.FromArgb(0, 41, 57, 82);
