@@ -23,10 +23,16 @@ namespace Multilink2.Controllers
             if ((Session["howLongONREAData"] == null) || (Session["SalesMethod"] != SalesMethod))
             {
                 int _rea_this_month = 0;
+                int _rea_last_month = 0;
+                string _current_month = String.Format("{0:MMMM}", DateTime.Now);
+                string _last_month = String.Format("{0:MMMM}", DateTime.Now.AddMonths(-1));
                 _list = howLongONREA.GetList(SalesMethod);
                 _rea_this_month = _list.Where(s => (s.rea_start.Month == DateTime.Now.Month && s.rea_start.Year == DateTime.Now.Year)).OrderBy(s => s.rea_start).Count();
+                _rea_last_month = _list.Where(s => (s.rea_start.Month == DateTime.Now.Month-1 && s.rea_start.Year == DateTime.Now.Year)).OrderBy(s => s.rea_start).Count();
                 Session["howLongONREAData"] = _list;
-                ViewBag.captionhowLongONREAData =  String.Format("{0}", _rea_this_month);
+                ViewBag.captionhowLongONREAData = "REA<br /><span class='percent_used'>" + _current_month + String.Format(" + {0}", _rea_this_month) + "</span>"+
+                                                  "<br /><span class='percent_used2'>" + _last_month + String.Format(" + {0}", _rea_last_month) + "</span>"; 
+
                 Session["captionhowLongONREAData"] = ViewBag.captionhowLongONREAData;
             }
             ViewBag.UserLocation = "Internet Advertising";            
@@ -39,7 +45,8 @@ namespace Multilink2.Controllers
 
 
         public ActionResult vwhowLongONREAPartial()
-        {           
+        {
+            ViewBag.captionhowLongONREAData = Session["captionhowLongONREAData"];
             return PartialView(Session["howLongONREAData"]);
         }
 

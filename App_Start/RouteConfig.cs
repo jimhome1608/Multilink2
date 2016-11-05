@@ -14,7 +14,7 @@ namespace Multilink2 {
             routes.MapRoute(
                 name: "Default", // Route name
                 url: "{controller}/{action}/{SalesMethod}", // URL with parameters
-                defaults: new { controller = "Home", action = "vwInternetEnquiries", SalesMethod = "Sales" } // Parameter defaults
+                defaults: new { controller = "Home", action = "vwhowLongONREA", SalesMethod = "Sales" } // Parameter defaults
                 //http://localhost:59861/Home/vwInternetEnquiries?SalesMethod=Sales
             );
         }
