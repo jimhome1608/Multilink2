@@ -15,7 +15,7 @@
     settings.Columns[0].FooterCellStyle.HorizontalAlign = HorizontalAlign.Right;
 
     settings.Columns.Add("suburb");
-    settings.Columns[1].Caption = "suburb";
+    settings.Columns[1].Caption = "Suburb";
     settings.Columns[1].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
     settings.Columns[1].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[1].HeaderStyle.ForeColor = System.Drawing.Color.White;
@@ -24,50 +24,50 @@
 
 
     settings.Columns.Add("rea_start");
-    settings.Columns[2].Caption = "rea_start";
-    settings.Columns[2].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
+    settings.Columns[2].Caption = ViewBag.captionhowLongONREAData;
+    settings.Columns[2].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
     settings.Columns[2].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[2].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[2].HeaderStyle.Font.Size = 10;
 
     settings.Columns.Add("days_on_rea");
-    settings.Columns[3].Caption = "days_on_rea";
+    settings.Columns[3].Caption = "REA Days";
     settings.Columns[3].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[3].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[3].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[3].HeaderStyle.Font.Size = 10;
 
     settings.Columns.Add("dca_start");
-    settings.Columns[4].Caption = "dca_start";
-    settings.Columns[4].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
+    settings.Columns[4].Caption = "DCA Start";
+    settings.Columns[4].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
     settings.Columns[4].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[4].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[3].HeaderStyle.Font.Size = 10;
 
     settings.Columns.Add("days_on_dca");
-    settings.Columns[5].Caption = "days_on_dca";
+    settings.Columns[5].Caption = "DCA Days";
     settings.Columns[5].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
     settings.Columns[5].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[5].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[5].HeaderStyle.Font.Size = 10;
 
     settings.Columns.Add("lister");
-    settings.Columns[6].Caption = "lister";
-    settings.Columns[6].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
+    settings.Columns[6].Caption = "Lister";
+    settings.Columns[6].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
     settings.Columns[6].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[6].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[6].HeaderStyle.Font.Size = 10;
 
     settings.Columns.Add("manager");
-    settings.Columns[7].Caption = "manager";
-    settings.Columns[7].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
+    settings.Columns[7].Caption = "Manager";
+    settings.Columns[7].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
     settings.Columns[7].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[7].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[7].HeaderStyle.Font.Size = 10;
 
     settings.Columns.Add("sales_method");
-    settings.Columns[8].Caption = "sales_method";
-    settings.Columns[8].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
+    settings.Columns[8].Caption = "Authority";
+    settings.Columns[8].HeaderStyle.HorizontalAlign = HorizontalAlign.Left;
     settings.Columns[8].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
     settings.Columns[8].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[8].HeaderStyle.Font.Size = 10;
@@ -87,7 +87,7 @@
     settings.Width = System.Web.UI.WebControls.Unit.Percentage(98);
     //settings.Width = System.Web.UI.WebControls.Unit.Pixel(800);
     //settings.Height = System.Web.UI.WebControls.Unit.Percentage(100);
-    settings.ClientSideEvents.Init = "OnInit";
+     settings.ClientSideEvents.Init = "OnInit";
     settings.ClientSideEvents.EndCallback = "OnEndCallback";
     settings.Settings.ShowVerticalScrollBar = true;
     settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;

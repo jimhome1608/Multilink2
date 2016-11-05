@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu>
-  <group Text="Internet Enquiries">
-    <item Text="Sales"  NavigateUrl="~/Home/vwInternetEnquiries/Sales" />
-    <item Text="Rentals"  NavigateUrl="~/Home/vwInternetEnquiries/Rentals" />
-    <item Text="Sales &amp; Rentals"  NavigateUrl="~/Home/vwInternetEnquiries/Sales and Rentals" />
-  </group>
-  <group Text="Internet Listings." >
+  <group Text="Internet Advertising" >
     <item Text="Sales"  NavigateUrl="~/Home/vwhowLongONREA/Sales"  />
     <item Text="Rentals"  NavigateUrl="~/Home/vwhowLongONREA/Rentals" />
     <item Text="Sales &amp; Rentals"  NavigateUrl="~/Home/vwhowLongONREA/Sales and Rentals" />
   </group>
   
-    
+  <group Text="Enquiries from internet">
+    <item Text="Sales"  NavigateUrl="~/Home/vwInternetEnquiries/Sales" />
+    <item Text="Rentals"  NavigateUrl="~/Home/vwInternetEnquiries/Rentals" />
+    <item Text="Sales &amp; Rentals"  NavigateUrl="~/Home/vwInternetEnquiries/Sales and Rentals" />
+  </group>
+      
 </menu>
