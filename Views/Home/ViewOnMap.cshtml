@@ -1,0 +1,15 @@
+﻿
+<script type="text/javascript">
+
+    function resize() {
+        var h = document.documentElement.clientHeight ;
+        var w = document.documentElement.clientWidth - 80;
+        var x = document.getElementById("ViewOnMap");
+        x.width = w;
+        x.height = 800;
+    }
+</script>
+
+
+<iframe id="ViewOnMap" src=@ViewBag.MapURL onload="resize()" ></iframe>
+

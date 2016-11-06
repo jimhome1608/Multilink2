@@ -11,6 +11,18 @@ namespace Multilink2.Controllers
     public class HomeController : Controller
     {
 
+        public ActionResult ViewOnMap(String SalesMethod)
+        {
+            ViewBag.UserLocation = "View on Map";
+            ViewBag.OfficeName = "Noel Jones - Box Hill";
+            Session["SalesMethod"] = SalesMethod;
+            SalesMethod = SalesMethod.Replace("and", "&");
+            ViewBag.UserLocation2 = SalesMethod;
+            ViewBag.MapURL = "http://www.multilink.com.au/multilinkmap/index.php/?oids[]=222&mode=sales";
+            if (SalesMethod == "Rentals")
+                ViewBag.MapURL = "http://www.multilink.com.au/multilinkmap/index.php/?oids[]=222&mode=rent";
+            return View();
+        }
 
         public ActionResult Index()
         {

@@ -212,6 +212,7 @@
     <Content Include="Views\Home\Video.cshtml" />
     <Content Include="Views\Home\vwhowLongONREA.cshtml" />
     <Content Include="Views\Home\vwhowLongONREAPartial.cshtml" />
+    <Content Include="Views\Home\ViewOnMap.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
