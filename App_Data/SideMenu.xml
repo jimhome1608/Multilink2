@@ -12,7 +12,7 @@
     <item Text="Sales &amp; Rentals"  NavigateUrl="~/Home/vwInternetEnquiries/Sales and Rentals" />
   </group>
 
-  <group Text="Show Current Listings On Map">
+  <group Text="View On Map">
     <item Text="Sales"  NavigateUrl="~/Home/ViewOnMap/Sales" />
     <item Text="Rentals"  NavigateUrl="~/Home/ViewOnMap/Rentals" />
   </group>

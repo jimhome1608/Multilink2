@@ -1,3 +1,11 @@
+
+<style>
+    .menu_heading {
+       font-size:18px;
+    }
+</style>
+
+
 <div class="leftPanel" id="Multilink2leftPanel">
         @* DXCOMMENT: Configure the left panel's menu *@
     @*@Html.DevExpress().NavBar(settings => {
@@ -10,7 +18,10 @@
     settings.ControlStyle.Paddings.Padding = System.Web.UI.WebControls.Unit.Pixel(0);
 }).BindToXML(HttpContext.Current.Server.MapPath("~/App_Data/SideMenu.xml"), "/menu/*").GetHtml()*@
 
-    @Html.DevExpress().Menu(settings =>
+    <span class="menu_heading"><i class="fa fa-home fa-fw"></i>Current Listing</span>
+    <br />
+
+        @Html.DevExpress().Menu(settings =>
    {
        settings.Name = "LeftMenu";
        settings.EnableAdaptivity = true;
@@ -18,5 +29,11 @@
        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
        settings.ControlStyle.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
    }).BindToXML(HttpContext.Current.Server.MapPath("~/App_Data/SideMenu.xml"), "/menu/*").GetHtml()
+        <br />
+        <br />
+    <span class="menu_heading"><i class="fa fa-home fa-fw"></i>Sales History</span>
+        <br />
+        <br />
+
 
 </div>

@@ -14,7 +14,7 @@ namespace Multilink2.Controllers
         public ActionResult ViewOnMap(String SalesMethod)
         {
             ViewBag.UserLocation = "View on Map";
-            ViewBag.OfficeName = "Noel Jones - Box Hill";
+            ViewBag.BaseLocation = "Current Listings";
             Session["SalesMethod"] = SalesMethod;
             SalesMethod = SalesMethod.Replace("and", "&");
             ViewBag.UserLocation2 = SalesMethod;
@@ -42,13 +42,13 @@ namespace Multilink2.Controllers
                 _rea_this_month = _list.Where(s => (s.rea_start.Month == DateTime.Now.Month && s.rea_start.Year == DateTime.Now.Year)).OrderBy(s => s.rea_start).Count();
                 _rea_last_month = _list.Where(s => (s.rea_start.Month == DateTime.Now.Month-1 && s.rea_start.Year == DateTime.Now.Year)).OrderBy(s => s.rea_start).Count();
                 Session["howLongONREAData"] = _list;
-                ViewBag.captionhowLongONREAData = "REA<br /><span class='percent_used'>" + _current_month + String.Format(" + {0}", _rea_this_month) + "</span>"+
-                                                  "<br /><span class='percent_used2'>" + _last_month + String.Format(" + {0}", _rea_last_month) + "</span>"; 
+                ViewBag.captionhowLongONREAData = "REA<br /><span class='percent_used'>" + _current_month + String.Format(" +{0}", _rea_this_month) + "</span>"+
+                                                  "<br /><span class='percent_used2'>" + _last_month + String.Format(" +{0}", _rea_last_month) + "</span>"; 
 
                 Session["captionhowLongONREAData"] = ViewBag.captionhowLongONREAData;
             }
             ViewBag.UserLocation = "Internet Advertising";            
-            ViewBag.OfficeName = "Noel Jones - Box Hill";
+            ViewBag.BaseLocation = "Current Listings";
             Session["SalesMethod"] = SalesMethod;
             SalesMethod = SalesMethod.Replace("and", "&");
             ViewBag.UserLocation2 = SalesMethod;
@@ -107,7 +107,7 @@ namespace Multilink2.Controllers
             SalesMethod = SalesMethod.Replace("and", "&");
             ViewBag.UserLocation = "Enquiries from internet";
             ViewBag.UserLocation2 = SalesMethod;            
-            ViewBag.OfficeName = "Noel Jones - Box Hill";
+            ViewBag.BaseLocation = "Current Listings";
             return View(Session["TypedListModel"]);
         }
         public ActionResult vwInternetEnquiriesPartial()
@@ -126,21 +126,21 @@ namespace Multilink2.Controllers
         public ActionResult vwHomePage()
         {
             ViewBag.UserLocation = "Inspections";
-            ViewBag.OfficeName = "Noel Jones - Box Hill";
+            ViewBag.BaseLocation = "Current Listings";
             return View();
         }
 
         public ActionResult vwAllActivity()
         {
             ViewBag.UserLocation = "Enquiries and Inspections";
-            ViewBag.OfficeName = "Noel Jones - Box Hill";
+            ViewBag.BaseLocation = "Current Listingsl";
             return View("vwHomePage");
         }
 
         public ActionResult Video()
         {
             ViewBag.UserLocation = "Intro. Video";
-            ViewBag.OfficeName = "Noel Jones - Box Hill";
+            ViewBag.BaseLocation = "Noel Jones - Box Hill";
             return View();
         }
 
