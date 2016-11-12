@@ -21,9 +21,15 @@ namespace Multilink2.Controllers
             int _office_id = 0;
             if (Session["user_office_id"] != null)
                 _office_id = (int)Session["user_office_id"];
-            ViewBag.MapURL = "http://www.multilink.com.au/multilinkmap/index.php/?oids[]="+ _office_id.ToString() + "+&mode=sales";
+            String _oids = "?oids[]=" + _office_id.ToString();
+            if (_office_id == 91)
+                _oids = _oids + "&oids[]=92";
+            if (_office_id == 92)
+                _oids = _oids + "&oids[]=91";
+            // http://www.multilink.com.au/multilinkmap/index.php/?oids[]=91&oids[]=92&mode=rent
+            ViewBag.MapURL = "http://www.multilink.com.au/multilinkmap/index.php/"+ _oids + "&mode=sales";
             if (SalesMethod == "Rentals")
-                ViewBag.MapURL = "http://www.multilink.com.au/multilinkmap/index.php/?oids[]=" + _office_id.ToString() + "&mode=rent";
+                ViewBag.MapURL = "http://www.multilink.com.au/multilinkmap/index.php/" + _oids + "&mode=rent";
             return View();
         }
 

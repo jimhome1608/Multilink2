@@ -6,7 +6,7 @@
     <item Text="Sales &amp; Rentals"  NavigateUrl="~/Home/vwhowLongONREA/Sales and Rentals" />
   </group>
   
-  <group Text="Report on Enquiries from internet">
+  <group Text="Enquiries from internet">
     <item Text="Sales"  NavigateUrl="~/Home/vwInternetEnquiries/Sales" />
     <item Text="Rentals"  NavigateUrl="~/Home/vwInternetEnquiries/Rentals" />
     <item Text="Sales &amp; Rentals"  NavigateUrl="~/Home/vwInternetEnquiries/Sales and Rentals" />

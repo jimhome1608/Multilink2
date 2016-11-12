@@ -86,7 +86,8 @@
     settings.Columns[8].HeaderStyle.ForeColor = System.Drawing.Color.White;
     settings.Columns[8].HeaderStyle.Font.Size = 10;
 
-
+    settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Count, "address");
+    settings.TotalSummary[0].DisplayFormat = "{0} Current Listings";
 
 
 
