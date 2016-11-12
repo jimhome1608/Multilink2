@@ -24,6 +24,7 @@
         @Html.DevExpress().Menu(settings =>
    {
        settings.Name = "LeftMenu";
+       settings.Enabled = Session["multilink_login"] == "ok";
        settings.EnableAdaptivity = true;
        settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);

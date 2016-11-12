@@ -1,0 +1,55 @@
+﻿@model Multilink2.Models.LoginModel
+
+<style>
+    .login_heading {
+        font-size: 18px;
+    }
+    body {
+        margin-left:10px;
+    }
+</style>
+
+<div class="login_heading">
+    <p>
+        Please enter your email address and password.
+    </p>
+    <p style="color:red">@ViewBag.ErrorMessage</p>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.DevExpress().TextBoxFor(m => m.UserName, tb =>
+{
+    tb.Properties.Caption = "Email Address";
+    tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+    tb.ShowModelErrors = true;
+    tb.Properties.ValidationSettings.Display = Display.Dynamic;
+    tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
+    tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
+}).GetHtml()
+
+    @Html.DevExpress().TextBoxFor(m => m.Password, tb =>
+{
+    tb.Properties.Caption = "Password";
+    tb.Properties.Password = true;
+    tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+    tb.ShowModelErrors = true;
+    tb.Properties.ValidationSettings.Display = Display.Dynamic;
+    tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
+    tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
+}).GetHtml()
+
+    @Html.DevExpress().CheckBox(cb =>
+{
+    cb.Name = "RememberMe";
+    cb.Text = "Remember me?";
+}).GetHtml()
+    <br />
+    @Html.DevExpress().Button(b =>
+{
+    b.Name = "Button";
+    b.Text = "Log On";
+    b.UseSubmitBehavior = true;
+}).GetHtml()
+}
