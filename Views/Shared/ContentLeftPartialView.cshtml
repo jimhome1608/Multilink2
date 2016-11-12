@@ -3,6 +3,15 @@
     .menu_heading {
        font-size:18px;
     }
+    .logoff-class {
+       font-size:18px;
+       padding-left:10px;
+       padding-right:10px;
+       font-size:18px;
+       font-style:normal;
+       background-color:teal;
+       color:white;
+    }
 </style>
 
 
@@ -35,7 +44,6 @@
     <span class="menu_heading"><i class="fa fa-home fa-fw"></i>Sales History</span>
         <br />
         <br />
-    @Html.ActionLink("Logout", "Login", "LogOff")
-
+    @Html.ActionLink("Logout", "LogOff", "Login")
 
 </div>
