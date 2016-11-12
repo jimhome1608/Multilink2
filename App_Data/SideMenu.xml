@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu>
-  <group Text="Internet Advertising Details" >
+  <group Text="How Long on Internet?" >
     <item Text="Sales"  NavigateUrl="~/Home/vwhowLongONREA/Sales"  />
     <item Text="Rentals"  NavigateUrl="~/Home/vwhowLongONREA/Rentals" />
     <item Text="Sales &amp; Rentals"  NavigateUrl="~/Home/vwhowLongONREA/Sales and Rentals" />

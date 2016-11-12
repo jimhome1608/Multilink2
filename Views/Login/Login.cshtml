@@ -23,6 +23,8 @@
 {
     tb.Properties.Caption = "Email Address";
     tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+    tb.Width = System.Web.UI.WebControls.Unit.Percentage(75);
+   // tb.Text = "this is a test";// @ViewBag.UserName;
     tb.ShowModelErrors = true;
     tb.Properties.ValidationSettings.Display = Display.Dynamic;
     tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
@@ -33,6 +35,7 @@
 {
     tb.Properties.Caption = "Password";
     tb.Properties.Password = true;
+    tb.Width = System.Web.UI.WebControls.Unit.Percentage(75);
     tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
     tb.ShowModelErrors = true;
     tb.Properties.ValidationSettings.Display = Display.Dynamic;

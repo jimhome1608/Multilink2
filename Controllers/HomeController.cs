@@ -36,13 +36,13 @@ namespace Multilink2.Controllers
             {
                 int _rea_this_month = 0;
                 int _rea_last_month = 0;
-                string _multilink_office_id = "";
-                Session["multilink_office_id"] = "222";
-                if (Session["multilink_office_id"] != null)
-                    _multilink_office_id = (string) Session["multilink_office_id"];
+                int _office_id = 0;
+                if (Session["user_office_id"] != null)
+                    _office_id = (int)Session["user_office_id"];
+
                 string _current_month = String.Format("{0:MMMM}", DateTime.Now);
                 string _last_month = String.Format("{0:MMMM}", DateTime.Now.AddMonths(-1));
-                _list = howLongONREA.GetList(SalesMethod, _multilink_office_id);
+                _list = howLongONREA.GetList(SalesMethod, _office_id);
                 _rea_this_month = _list.Where(s => (s.rea_start.Month == DateTime.Now.Month && s.rea_start.Year == DateTime.Now.Year)).OrderBy(s => s.rea_start).Count();
                 _rea_last_month = _list.Where(s => (s.rea_start.Month == DateTime.Now.Month-1 && s.rea_start.Year == DateTime.Now.Year)).OrderBy(s => s.rea_start).Count();
                 Session["howLongONREAData"] = _list;
@@ -51,7 +51,7 @@ namespace Multilink2.Controllers
 
                 Session["captionhowLongONREAData"] = ViewBag.captionhowLongONREAData;
             }
-            ViewBag.UserLocation = "Internet Advertising";            
+            ViewBag.UserLocation = "How Long on Internet?";            
             ViewBag.BaseLocation = "Current Listings";
             Session["SalesMethod"] = SalesMethod;
             SalesMethod = SalesMethod.Replace("and", "&");
@@ -72,7 +72,10 @@ namespace Multilink2.Controllers
             List<WebEnquires> _list;
             if ((Session["TypedListModel"] == null) || (Session["SalesMethod"] != SalesMethod))
             {
-                _list = WebEnquires.GetList(SalesMethod);
+                int _office_id = 0;
+                if (Session["user_office_id"] != null)
+                    _office_id = (int)Session["user_office_id"];
+                _list = WebEnquires.GetList(_office_id,SalesMethod);
                 float _total_count = 0;
                 float _rea_count = 0;
                 float _dca_count = 0;
