@@ -18,9 +18,12 @@ namespace Multilink2.Controllers
             Session["SalesMethod"] = SalesMethod;
             SalesMethod = SalesMethod.Replace("and", "&");
             ViewBag.UserLocation2 = SalesMethod;
-            ViewBag.MapURL = "http://www.multilink.com.au/multilinkmap/index.php/?oids[]=222&mode=sales";
+            int _office_id = 0;
+            if (Session["user_office_id"] != null)
+                _office_id = (int)Session["user_office_id"];
+            ViewBag.MapURL = "http://www.multilink.com.au/multilinkmap/index.php/?oids[]="+ _office_id.ToString() + "+&mode=sales";
             if (SalesMethod == "Rentals")
-                ViewBag.MapURL = "http://www.multilink.com.au/multilinkmap/index.php/?oids[]=222&mode=rent";
+                ViewBag.MapURL = "http://www.multilink.com.au/multilinkmap/index.php/?oids[]=" + _office_id.ToString() + "&mode=rent";
             return View();
         }
 
