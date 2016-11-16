@@ -35,13 +35,17 @@
         column.HeaderStyle.Font.Size = 10;
     });
 
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "days_on_rea";
+        column.Caption = "REA Days";
+        column.HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
+        column.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
+        column.HeaderStyle.ForeColor = System.Drawing.Color.White;
+        column.HeaderStyle.Font.Size = 10;
+    });
 
-    settings.Columns.Add("days_on_rea");
-    settings.Columns[3].Caption = "REA Days";
-    settings.Columns[3].HeaderStyle.HorizontalAlign = HorizontalAlign.Right;
-    settings.Columns[3].HeaderStyle.BackColor = System.Drawing.Color.FromArgb(0, 98, 26, 75);
-    settings.Columns[3].HeaderStyle.ForeColor = System.Drawing.Color.White;
-    settings.Columns[3].HeaderStyle.Font.Size = 10;
+
 
     settings.Columns.Add(column =>
     {
@@ -106,6 +110,67 @@
     settings.ClientSideEvents.EndCallback = "OnEndCallback";
     settings.Settings.ShowVerticalScrollBar = true;
     settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+    settings.CustomColumnDisplayText = (sender, e) =>
+    {
+        if (e.Column.FieldName == "rea_start")
+        {
+            String _value = Convert.ToString(e.Value);
+            if (_value.IndexOf("1/01/1900") > -1)
+            {
+                e.EncodeHtml = false;
+                e.DisplayText = "<i class='fa fa-times' aria-hidden='true'>&nbsp;REA</i>";
+            }
+        };
+        if (e.Column.FieldName == "dca_start")
+        {
+            String _value = Convert.ToString(e.Value);
+            if (_value.IndexOf("1/01/1900") > -1)
+            {
+                e.EncodeHtml = false;
+                e.DisplayText = "<i class='fa fa-times' aria-hidden='true'>&nbsp;DCA</i>";
+            }
+        };
+        if (e.Column.FieldName == "days_on_dca")
+        {
+            int _value = Convert.ToInt32(e.Value);
+            if (_value == 0 )
+            {
+                e.EncodeHtml = false;
+                e.DisplayText = "";
+            }
+        };
+        if (e.Column.FieldName == "days_on_rea")
+        {
+            int _value = Convert.ToInt32(e.Value);
+            if (_value == 0)
+            {
+                e.EncodeHtml = false;
+                e.DisplayText = "";
+            }
+        };
+
+    };
+    settings.HtmlDataCellPrepared = (sender, e) =>
+    {
+        if ((e.DataColumn.FieldName == "rea_start") | (e.DataColumn.FieldName == "days_on_rea"))
+        {
+            String _value = Convert.ToString(e.GetValue("rea_start"));
+            if (_value.IndexOf("1/01/1900") > -1)
+            {
+              //  e.Cell.ForeColor = System.Drawing.Color.Red;
+                e.Cell.BackColor = System.Drawing.Color.Silver;
+            }
+        };
+        if ((e.DataColumn.FieldName == "dca_start") | (e.DataColumn.FieldName == "days_on_dca"))
+        {
+            String _value = Convert.ToString(e.GetValue("dca_start"));
+            if (_value.IndexOf("1/01/1900") > -1)
+            {
+               // e.Cell.ForeColor = System.Drawing.Color.Red;
+                e.Cell.BackColor = System.Drawing.Color.Silver;
+            }
+        }
+    };
     settings.HtmlFooterCellPrepared = (sender, e) =>
     {
         e.Cell.BackColor = System.Drawing.Color.FromArgb(0, 41, 57, 82);

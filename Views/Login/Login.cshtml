@@ -2,59 +2,89 @@
 
 <style>
     .login_heading {
-        font-size: 18px;
+       padding-left:10px;
+       padding-right:10px;
+       font-size:18px;
+       background-color:white;
+       color:black;
+       border-radius:5px 5px;
+       width: 380px;
+       opacity:0.8;   
     }
     body {
         margin-left:10px;
     }
+
+    #backimage {
+        position: fixed; 
+        left: 0px; 
+        top: 0px; 
+        z-index: -1; /* Ensure div tag stays behind content; -999 might work, too. */
+    }
 </style>
 
-<div class="login_heading">
-    <p>
-        Please enter your email address and password.
-    </p>
-    <p style="color:red">@ViewBag.ErrorMessage</p>
-</div>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<script type="text/javascript">
+       
+    window.addEventListener('resize', AdjustSize);
+    function AdjustSize() {
+        var h = document.documentElement.clientHeight;
+        var w = document.documentElement.clientWidth;
+        var a = document.getElementById("bimage");
+        a.width = w;
+        a.height = h;
+    }
+</script>
 
-    @Html.DevExpress().TextBoxFor(m => m.UserName, tb =>
+<body onload="AdjustSize();">
+
+    <div class="login_heading">
+        <p>
+            Please enter your Email Address and Password
+        </p>
+        <p style="color:red">@ViewBag.ErrorMessage</p>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.DevExpress().TextBoxFor(m => m.UserName, tb =>
 {
+    tb.ControlStyle.CssClass = "login_heading";
     tb.Properties.Caption = "Email Address";
     tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
-    tb.Width = System.Web.UI.WebControls.Unit.Percentage(75);
-   // tb.Text = "this is a test";// @ViewBag.UserName;
+    tb.Width = System.Web.UI.WebControls.Unit.Pixel(380);
+    // tb.Text = "this is a test";// @ViewBag.UserName;
     tb.ShowModelErrors = true;
     tb.Properties.ValidationSettings.Display = Display.Dynamic;
     tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
     tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
 }).GetHtml()
+        <br />
 
-    @Html.DevExpress().TextBoxFor(m => m.Password, tb =>
-{
-    tb.Properties.Caption = "Password";
-    tb.Properties.Password = true;
-    tb.Width = System.Web.UI.WebControls.Unit.Percentage(75);
-    tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
-    tb.ShowModelErrors = true;
-    tb.Properties.ValidationSettings.Display = Display.Dynamic;
-    tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
-    tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
-}).GetHtml()
-
-    /*
-    @Html.DevExpress().CheckBox(cb =>
-{
-    cb.Name = "RememberMe";
-    cb.Text = "Remember me?";
-}).GetHtml()
-*/
-    <br />
-    @Html.DevExpress().Button(b =>
+        @Html.DevExpress().TextBoxFor(m => m.Password, tb =>
+   {
+       tb.ControlStyle.CssClass = "login_heading";
+       tb.Properties.Caption = "Password";
+       tb.Properties.Password = true;
+       tb.Width = System.Web.UI.WebControls.Unit.Pixel(380);
+       tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+       tb.ShowModelErrors = true;
+       tb.Properties.ValidationSettings.Display = Display.Dynamic;
+       tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
+       tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
+   }).GetHtml()
+        <br />
+        @Html.DevExpress().Button(b =>
 {
     b.Name = "Button";
     b.Text = "Log On";
     b.UseSubmitBehavior = true;
 }).GetHtml()
-}
+    }
+
+    <div id="backimage">
+        <img  id="bimage" src="~/images/mountain.jpg" />
+
+    </div>
+
+

@@ -152,6 +152,7 @@
     <Content Include="fonts\font-awesome.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\mountain.jpg" />
     <Content Include="Scripts\AjaxLogin.js" />
     <Content Include="Scripts\cldr.event.js" />
     <Content Include="Scripts\cldr.js" />
@@ -237,7 +238,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="images\" />
     <Folder Include="video\" />
   </ItemGroup>
   <PropertyGroup>
