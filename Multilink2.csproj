@@ -231,6 +231,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HexadecimalEncoding.cs" />
     <Compile Include="Models\DB.cs" />
     <Compile Include="Models\howLongONREA.cs" />
     <Compile Include="Models\InternetEnquires.cs" />
