@@ -135,6 +135,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SideMenu2.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\SideMenu.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -215,6 +218,7 @@
     <Content Include="Views\Home\vwhowLongONREAPartial.cshtml" />
     <Content Include="Views\Home\ViewOnMap.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Inspections\Inspections.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -227,6 +231,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InspectionsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
