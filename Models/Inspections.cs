@@ -17,7 +17,6 @@ namespace Multilink2.Models
             this.items = new List<Inspections>();
         }
 
-
         public List<Inspections> getData()
         {
             this.items.Clear();
@@ -56,6 +55,17 @@ namespace Multilink2.Models
         }
 
     }
+
+
+    /*
+     The paramaters for writeData()
+         wl_write_ofi_results3]
+             @_OFFICE_ID int, @_ID int,@_USER_ID int, @_OFI_DATE varchar(50), @_OFI_IDX int,
+             @_NAME varchar(255), @_PHONE varchar(255), @_VENDORNOTES varchar(4096),
+             @_INTERESTED int,@_INVESTOR int, @_HOT_PROSPECT int,  @_PRICE  varchar(255),
+             @_EMAIL varchar(255),  @_ADDRESS varchar(255),  @_SURNAME varchar(255), @_WANTS_SECT32 int, @_RESULT  varchar(255),
+             @_BUYERNOTES varchar(4096),  @_POTENTIAL_SELLER int, @_ACTIVITY_TYPE varchar(255) 
+    */
 
     public class Inspections
     {
