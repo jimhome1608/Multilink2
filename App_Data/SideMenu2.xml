@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu>
-   <item Text="Sample OFI Screen"  NavigateUrl="~/Inspections/Inspections/Sales"  />
+   <item Text="Sample OFI Screen"  NavigateUrl="~/Inspections/ViewInspections/Sales"  />
   
 
 

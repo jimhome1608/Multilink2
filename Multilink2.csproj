@@ -218,7 +218,7 @@
     <Content Include="Views\Home\vwhowLongONREAPartial.cshtml" />
     <Content Include="Views\Home\ViewOnMap.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Inspections\Inspections.cshtml" />
+    <Content Include="Views\Inspections\ViewInspections.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -239,6 +239,7 @@
     <Compile Include="Helpers\HexadecimalEncoding.cs" />
     <Compile Include="Models\DB.cs" />
     <Compile Include="Models\howLongONREA.cs" />
+    <Compile Include="Models\Inspections.cs" />
     <Compile Include="Models\InternetEnquires.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

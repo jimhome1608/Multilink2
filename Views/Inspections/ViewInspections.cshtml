@@ -1,0 +1,46 @@
+﻿@using Multilink2.Models;
+@model InspectionList
+
+<style>
+    body{
+        margin-left:10px;
+        padding-left:20px;
+        padding-top: 10px;
+    }
+</style>
+    <div class="table-responsive">
+        <table overflow auto; class="table order-table table-striped table-bordered table-hover sortable" id="current-property-listing-table">
+            <thead>
+                <tr>
+                    <!-- print custome columns -->
+                    <th class="text-left">OFFICE_ID</th>
+                    <th class="text-left">ID</th>
+                    <th class="text-left">USER_ID</th>
+                    <th class="text-left">OFI_DATE</th>
+                    <th class="text-left">OFI_IDX</th>
+                    <th class="text-left">PHONE</th>
+                    <th class="text-left">NAME</th>
+                    <th class="text-left">SURNAME</th>
+                    <th class="text-left">PRICE</th>
+
+                </tr>
+            </thead>
+            <tbody id="fbody3">
+                @foreach (var record in Model.items)
+            {
+                    <tr>
+                        <td>@record.OFFICE_ID</td>
+                        <td>@record.ID</td>
+                        <td>@record.USER_ID</td>
+                        <td>@record.OFI_DATE</td>
+                        <td>@record.OFI_IDX</td>
+                        <td>@record.PHONE</td>
+                        <td>@record.NAME</td>
+                        <td>@record.SURNAME</td>
+                        <td>@record.PRICE</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+

@@ -25,7 +25,6 @@ namespace Multilink2.Models
             odbcConnection = new OdbcConnection(connectionString.ConnectionString);
             try
             {
-                bool b = true;
                 counter++;
                 if (odbcConnection.State.ToString() != "Open")
                 {
