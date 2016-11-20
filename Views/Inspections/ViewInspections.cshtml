@@ -1,6 +1,53 @@
 ﻿@using Multilink2.Models;
 @model InspectionList
 
+<script>
+    function Storage() {
+
+        this.get = function (name) {
+            return JSON.parse(window.localStorage.getItem(name));
+        };
+
+        this.set = function (name, value) {
+            window.localStorage.setItem(name, JSON.stringify(value));
+        };
+
+        this.clear = function () {
+            window.localStorage.clear();
+        };
+    }
+
+    function saveModel() {
+        if (model.items[0] != null)
+        {
+            var OFFICE_ID = model.items[0].OFFICE_ID;
+            var ID = model.items[0].ID
+            var USER_ID = model.items[0].USER_ID;
+            var OFI_DATE = model.items[0].OFI_DATE;
+            key_name = "OFI_REULTS_xx_xx_"+OFFICE_ID+"_"+ID+"_"+USER_ID+"_"+OFI_DATE;
+
+            store.set(key_name, model);
+        }
+    }
+
+    function showData () {
+        var ofi_data = document.getElementById ("ofi_data");        
+        //model.items.splice(0, 1);
+        model['items'].push({"OFFICE_ID":"1","ID":"283527","USER_ID":"86","OFI_DATE":"10112016","OFI_IDX":"666","PHONE":"","NAME":"test 03","SURNAME":"Test 01","PRICE":"","NOTES":"","RESULT":"","EMAIL":"","MY_NOTESPOTENTIAL_SELLER":null,"WANTS_SECT32":"0","INTERESTED":"0","MAYBE_INTERESTED":"0","NOT_INTERESTED":"0","ACTIVITY_TYPE":"Inspected"});
+        saveModel();
+        var jsonStr = JSON.stringify(model);
+        var ofi_data_from_local_storage = window.localStorage.getItem(key_name);
+        ofi_data.innerHTML= "From Model<br />"+jsonStr+"<br />"+localStorage.length+"<br /><br />From Local Storage<br />"+
+            ofi_data_from_local_storage;
+    }
+
+    var store = new Storage();
+    var model = @Html.Raw(Json.Encode(Model));
+    var key_name = "";
+    model['items'].push({"OFFICE_ID":"1","ID":"283527","USER_ID":"86","OFI_DATE":"10112016","OFI_IDX":"666","PHONE":"","NAME":"test 03","SURNAME":"Test 01","PRICE":"","NOTES":"","RESULT":"","EMAIL":"","MY_NOTESPOTENTIAL_SELLER":null,"WANTS_SECT32":"0","INTERESTED":"0","MAYBE_INTERESTED":"0","NOT_INTERESTED":"0","ACTIVITY_TYPE":"Inspected"});
+    saveModel();
+</script>
+
 <style>
     body{
         margin-left:10px;
@@ -8,39 +55,9 @@
         padding-top: 10px;
     }
 </style>
-    <div class="table-responsive">
-        <table overflow auto; class="table order-table table-striped table-bordered table-hover sortable" id="current-property-listing-table">
-            <thead>
-                <tr>
-                    <!-- print custome columns -->
-                    <th class="text-left">OFFICE_ID</th>
-                    <th class="text-left">ID</th>
-                    <th class="text-left">USER_ID</th>
-                    <th class="text-left">OFI_DATE</th>
-                    <th class="text-left">OFI_IDX</th>
-                    <th class="text-left">PHONE</th>
-                    <th class="text-left">NAME</th>
-                    <th class="text-left">SURNAME</th>
-                    <th class="text-left">PRICE</th>
-
-                </tr>
-            </thead>
-            <tbody id="fbody3">
-                @foreach (var record in Model.items)
-            {
-                    <tr>
-                        <td>@record.OFFICE_ID</td>
-                        <td>@record.ID</td>
-                        <td>@record.USER_ID</td>
-                        <td>@record.OFI_DATE</td>
-                        <td>@record.OFI_IDX</td>
-                        <td>@record.PHONE</td>
-                        <td>@record.NAME</td>
-                        <td>@record.SURNAME</td>
-                        <td>@record.PRICE</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+<body onload="showData()">
+    <button onclick="showData();">New</button>
     </div>
+    <div style="background-color:azure;padding-left:10px;padding-bottom:10px" id="ofi_data">OFI Data....</div>
+
 
