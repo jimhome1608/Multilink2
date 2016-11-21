@@ -1,5 +1,20 @@
 ﻿@using Multilink2.Models;
 @model InspectionList
+<style>
+     .buyer-full-name {
+       margin-top: 20px;
+       margin-right: 20px; 
+       padding-left:10px;
+       width: 200px;
+       height: 50px;
+       padding-right:10px;
+       font-size:18px;
+       background-color:#621A4B;
+       color:white;
+       border-radius:5px 5px;
+       float:left; 
+    }
+</style>
 
 <script>
     function Storage() {
@@ -30,21 +45,57 @@
         }
     }
 
+    function hide (elements) {
+        elements = elements.length ? elements : [elements];
+        for (var index = 0; index < elements.length; index++) {
+            elements[index].style.display = 'none';
+        }
+    }
+
+    function show (elements) {
+        elements = elements.length ? elements : [elements];
+        for (var index = 0; index < elements.length; index++) {
+            elements[index].style.display = 'block';
+        }
+    }
+
+    function hideData() {
+        hide(document.querySelectorAll('#new-ofi-data'));
+    }
+
     function showData () {
-        var ofi_data = document.getElementById ("ofi_data");        
         //model.items.splice(0, 1);
-        model['items'].push({"OFFICE_ID":"1","ID":"283527","USER_ID":"86","OFI_DATE":"10112016","OFI_IDX":"666","PHONE":"","NAME":"test 03","SURNAME":"Test 01","PRICE":"","NOTES":"","RESULT":"","EMAIL":"","MY_NOTESPOTENTIAL_SELLER":null,"WANTS_SECT32":"0","INTERESTED":"0","MAYBE_INTERESTED":"0","NOT_INTERESTED":"0","ACTIVITY_TYPE":"Inspected"});
+        var ofi_name = document.getElementById ("ofi_name"); 
+        show(document.querySelectorAll('#new-ofi-data'));
+        model['items'].push({"OFFICE_ID":"1","ID":"283527","USER_ID":"86","OFI_DATE":"10112016","OFI_IDX":"666","PHONE":"","NAME":ofi_name.value,"SURNAME":"Clark","PRICE":"","NOTES":"","RESULT":"","EMAIL":"","MY_NOTESPOTENTIAL_SELLER":null,"WANTS_SECT32":"0","INTERESTED":"0","MAYBE_INTERESTED":"0","NOT_INTERESTED":"0","ACTIVITY_TYPE":"Inspected"});
         saveModel();
+
+        var ofi_data = document.getElementById ("ofi_show");  
+        var i = 0;
+        var _hmtl = "";
+        for (i=0;i<1000;i++)
+        {
+            if (model.items[i] == null)
+                break;
+            _hmtl = _hmtl+
+                '<div class="buyer-full-name"> '+
+                model.items[i].NAME+" "+ model.items[i].SURNAME+
+                '</div>';
+        }
+        ofi_data.innerHTML= _hmtl;
+        
+        
+        var ofi_data = document.getElementById ("ofi_data");                
         var jsonStr = JSON.stringify(model);
         var ofi_data_from_local_storage = window.localStorage.getItem(key_name);
         ofi_data.innerHTML= "From Model<br />"+jsonStr+"<br />"+localStorage.length+"<br /><br />From Local Storage<br />"+
             ofi_data_from_local_storage;
+           
     }
 
     var store = new Storage();
     var model = @Html.Raw(Json.Encode(Model));
     var key_name = "";
-    model['items'].push({"OFFICE_ID":"1","ID":"283527","USER_ID":"86","OFI_DATE":"10112016","OFI_IDX":"666","PHONE":"","NAME":"test 03","SURNAME":"Test 01","PRICE":"","NOTES":"","RESULT":"","EMAIL":"","MY_NOTESPOTENTIAL_SELLER":null,"WANTS_SECT32":"0","INTERESTED":"0","MAYBE_INTERESTED":"0","NOT_INTERESTED":"0","ACTIVITY_TYPE":"Inspected"});
     saveModel();
 </script>
 
@@ -57,7 +108,10 @@
 </style>
 <body onload="showData()">
     <button onclick="showData();">New</button>
-    </div>
+    <button onclick="hideData();">Hide</button>
+    <div id="new-ofi-data"><input id="ofi_name" placeholder="Name" type="text" autocorrect="off" value=""><span class="material-input"></span></div>
+    <div style="padding-left:10px;padding-bottom:10px" id="ofi_show">OFI Data....</div>
+    <br /><br />
     <div style="background-color:azure;padding-left:10px;padding-bottom:10px" id="ofi_data">OFI Data....</div>
 
 
