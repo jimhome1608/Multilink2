@@ -18,10 +18,10 @@ namespace Multilink2.Models
             this.items = new List<Inspections>();
         }
 
-        public bool writeToDB()
+        public string writeToDB()
         {
             if (items.Count() < 1)
-                return true;
+                return "OK";
             DB db = new DB();
             db.open();
             OdbcCommand query = new OdbcCommand("", db.odbcConnection);
@@ -32,6 +32,14 @@ namespace Multilink2.Models
                             i.OFFICE_ID, i.ID, i.USER_ID, i.OFI_DATE, i.OFI_IDX, i.NAME, i.PHONE, i.MY_NOTESPOTENTIAL_SELLER, i.INTERESTED, 0, 0, i.PRICE, i.EMAIL, "", i.SURNAME, i.WANTS_SECT32,
                             i.RESULT, i.NOTES, 0, "Inspected");
                 query.CommandText = _sql;
+                try
+                {
+
+                }
+                catch (Exception e)
+                {
+                    return e.Message;
+                }
 
                 reader = query.ExecuteReader();
                 if (reader.Read() == true)
@@ -41,7 +49,7 @@ namespace Multilink2.Models
                 reader.Close();
             }
             db.close();
-            return true;
+            return "OK";
         }
 
         public List<Inspections> loadFromDB()

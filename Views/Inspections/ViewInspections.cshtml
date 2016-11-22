@@ -87,7 +87,6 @@
         }
         ofi_data.innerHTML= _hmtl;
 
-
         var ofi_data = document.getElementById ("ofi_data");
         var jsonStr = JSON.stringify(model);
         var ofi_data_from_local_storage = window.localStorage.getItem(key_name);
@@ -95,9 +94,7 @@
             ofi_data_from_local_storage;
 
     }
-
     
-
     function saveData () {
         var jsonStr = JSON.stringify(model)
         alert(jsonStr);
@@ -108,7 +105,7 @@
             type: 'POST',
             dataType: 'text',
             contentType: "text/plain; charset=utf-8",
-            success: function(response) { alert(response); },
+            success: function(response) { if (response == 'OK') alert("Saved OK, should clear data now"); },
             error: function(xhr, ajaxOptions, thrownError) { alert(xhr.responseText); },
             data:jsonStr
         });

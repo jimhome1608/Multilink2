@@ -31,8 +31,7 @@ namespace Multilink2.Controllers
             StreamReader reader = new StreamReader(stream, Request.ContentEncoding);
             string text = reader.ReadToEnd();
             InspectionList _inspectionList = JsonConvert.DeserializeObject<InspectionList>(text);
-            _inspectionList.writeToDB();
-            return _inspectionList.items[0].NAME; ;
+            return _inspectionList.writeToDB();
         }
 
     }
