@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Odbc;
 
+
 namespace Multilink2.Models
 {
     //exec wl_get_localstorage 1, 86,283527, '10112016'
@@ -17,7 +18,33 @@ namespace Multilink2.Models
             this.items = new List<Inspections>();
         }
 
-        public List<Inspections> getData()
+        public bool writeToDB()
+        {
+            if (items.Count() < 1)
+                return true;
+            DB db = new DB();
+            db.open();
+            OdbcCommand query = new OdbcCommand("", db.odbcConnection);
+            OdbcDataReader reader;
+            foreach (Inspections i in items)
+            {
+                String _sql = String.Format("exec wl_write_ofi_results3 {0}, {1}, {2}, '{3}', {4}, '{5}', '{6}', '{7}', {8}, {9}, {10}, '{11}', '{12}', '{13}', '{14}', {15}, '{16}',' {17}', {18}, '{19}' ",
+                            i.OFFICE_ID, i.ID, i.USER_ID, i.OFI_DATE, i.OFI_IDX, i.NAME, i.PHONE, i.MY_NOTESPOTENTIAL_SELLER, i.INTERESTED, 0, 0, i.PRICE, i.EMAIL, "", i.SURNAME, i.WANTS_SECT32,
+                            i.RESULT, i.NOTES, 0, "Inspected");
+                query.CommandText = _sql;
+
+                reader = query.ExecuteReader();
+                if (reader.Read() == true)
+                {
+                    i.OFI_IDX = reader.GetString(0);
+                }
+                reader.Close();
+            }
+            db.close();
+            return true;
+        }
+
+        public List<Inspections> loadFromDB()
         {
             this.items.Clear();
             DB db = new DB();

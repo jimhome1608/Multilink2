@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Multilink2.Models;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Multilink2.Controllers
 {
@@ -15,11 +17,22 @@ namespace Multilink2.Controllers
         public ActionResult ViewInspections()
         {
             InspectionList inspectionList = new InspectionList();
-            inspectionList.getData(); 
+            inspectionList.loadFromDB(); 
             ViewBag.UserLocation = "Inspection";
             ViewBag.UserLocation2 = "Sat. 19/11/2016";
             ViewBag.BaseLocation = "8-18 Glass St";
             return View(inspectionList);
+        }
+
+        [HttpPost]
+        public string saveInspections(String SalesMethod)
+        {
+            Stream stream = Request.InputStream;
+            StreamReader reader = new StreamReader(stream, Request.ContentEncoding);
+            string text = reader.ReadToEnd();
+            InspectionList _inspectionList = JsonConvert.DeserializeObject<InspectionList>(text);
+            _inspectionList.writeToDB();
+            return _inspectionList.items[0].NAME; ;
         }
 
     }

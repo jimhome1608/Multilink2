@@ -16,6 +16,9 @@
     }
 </style>
 
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
 <script>
     function Storage() {
 
@@ -65,12 +68,12 @@
 
     function showData () {
         //model.items.splice(0, 1);
-        var ofi_name = document.getElementById ("ofi_name"); 
+        var ofi_name = document.getElementById ("ofi_name");
         show(document.querySelectorAll('#new-ofi-data'));
         model['items'].push({"OFFICE_ID":"1","ID":"283527","USER_ID":"86","OFI_DATE":"10112016","OFI_IDX":"666","PHONE":"","NAME":ofi_name.value,"SURNAME":"Clark","PRICE":"","NOTES":"","RESULT":"","EMAIL":"","MY_NOTESPOTENTIAL_SELLER":null,"WANTS_SECT32":"0","INTERESTED":"0","MAYBE_INTERESTED":"0","NOT_INTERESTED":"0","ACTIVITY_TYPE":"Inspected"});
         saveModel();
 
-        var ofi_data = document.getElementById ("ofi_show");  
+        var ofi_data = document.getElementById ("ofi_show");
         var i = 0;
         var _hmtl = "";
         for (i=0;i<1000;i++)
@@ -83,14 +86,32 @@
                 '</div>';
         }
         ofi_data.innerHTML= _hmtl;
-        
-        
-        var ofi_data = document.getElementById ("ofi_data");                
+
+
+        var ofi_data = document.getElementById ("ofi_data");
         var jsonStr = JSON.stringify(model);
         var ofi_data_from_local_storage = window.localStorage.getItem(key_name);
         ofi_data.innerHTML= "From Model<br />"+jsonStr+"<br />"+localStorage.length+"<br /><br />From Local Storage<br />"+
             ofi_data_from_local_storage;
-           
+
+    }
+
+    
+
+    function saveData () {
+        var jsonStr = JSON.stringify(model)
+        alert(jsonStr);
+
+        var url = "@Url.Action("saveInspections", "Inspections")";
+        $.ajax({
+            url: url+"/DataSent",
+            type: 'POST',
+            dataType: 'text',
+            contentType: "text/plain; charset=utf-8",
+            success: function(response) { alert(response); },
+            error: function(xhr, ajaxOptions, thrownError) { alert(xhr.responseText); },
+            data:jsonStr
+        });
     }
 
     var store = new Storage();
@@ -108,8 +129,9 @@
 </style>
 <body onload="showData()">
     <button onclick="showData();">New</button>
-    <button onclick="hideData();">Hide</button>
-    <div id="new-ofi-data"><input id="ofi_name" placeholder="Name" type="text" autocorrect="off" value=""><span class="material-input"></span></div>
+    <button onclick="saveData();">Hide</button>
+
+    <div class="well" id="new-ofi-data"><input id="ofi_name" placeholder="Name" type="text" autocorrect="off" value=""><span class="material-input"></span></div>
     <div style="padding-left:10px;padding-bottom:10px" id="ofi_show">OFI Data....</div>
     <br /><br />
     <div style="background-color:azure;padding-left:10px;padding-bottom:10px" id="ofi_data">OFI Data....</div>
