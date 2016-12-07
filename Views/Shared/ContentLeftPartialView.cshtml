@@ -27,6 +27,8 @@
     settings.ControlStyle.Paddings.Padding = System.Web.UI.WebControls.Unit.Pixel(0);
 }).BindToXML(HttpContext.Current.Server.MapPath("~/App_Data/SideMenu.xml"), "/menu/*").GetHtml()*@
 
+   
+
     <span class="menu_heading"><i class="fa fa-home fa-fw"></i>Current Listing</span>
     <br />
 
@@ -44,6 +46,7 @@
     @Html.ActionLink("Logout", "LogOff", "Login")
     <br />
     <br />
+    <img src="~/images/user_photo.jpg" width="100" />
 
     @Html.DevExpress().Menu(settings =>
    {

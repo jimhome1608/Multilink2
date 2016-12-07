@@ -6,6 +6,9 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Web.Mvc;
 using System.Data.Odbc;
+using System.Drawing;
+using System.IO;
+using System.Web;
 
 namespace Multilink2.Models
 {
@@ -58,6 +61,23 @@ namespace Multilink2.Models
                     }
 
                 }
+                reader.Close();
+                query.CommandText = "select [USER_PHOTO] from users where [USER_ID] = 55 and [USER_OFFICE_ID] = 1";
+                reader = query.ExecuteReader();
+                if (reader.Read() == true)
+                {
+                    byte[] data = (byte[])reader[0]; //be careful here number 1 is 2nd column in DB (1st is picName, 2nd is Image)
+                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream(data))
+                    {
+                        string user_photo = HttpContext.Current.Server.MapPath("~/images/user_photo.jpg");
+                        using (FileStream file = new FileStream(user_photo, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                        {
+                            file.Write(data,0, (int)data.Length);
+                        }
+                    }
+                }
+
+
             };
             db.close();
             return _result;

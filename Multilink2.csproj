@@ -157,7 +157,10 @@
     <Content Include="fonts\font-awesome.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\Menu.png" />
+    <Content Include="images\Menu32.png" />
     <Content Include="images\mountain.jpg" />
+    <Content Include="images\user_photo.jpg" />
     <Content Include="Scripts\AjaxLogin.js" />
     <Content Include="Scripts\cldr.event.js" />
     <Content Include="Scripts\cldr.js" />
@@ -191,6 +194,8 @@
     <None Include="Properties\PublishProfiles\Multilink2.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
