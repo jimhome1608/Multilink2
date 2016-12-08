@@ -46,21 +46,23 @@
     @Html.ActionLink("Logout", "LogOff", "Login")
     <br />
     <br />
-    <img src="~/images/user_photo.jpg" width="100" />
-
+    <img src=@Session["user_photo"] width="100" />
+    
+ @*
     @Html.DevExpress().Menu(settings =>
-   {
-       settings.Name = "LeftMenu1";
-       settings.Enabled = Session["multilink_login"] == "ok";
-       settings.EnableAdaptivity = true;
-       settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
-       settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
-       settings.ControlStyle.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
-   }).BindToXML(HttpContext.Current.Server.MapPath("~/App_Data/SideMenu2.xml"), "/menu/*").GetHtml()
-    <br />
-    <br />
+     {
+         settings.Name = "LeftMenu1";
+         settings.Enabled = Session["multilink_login"] == "ok";
+         settings.EnableAdaptivity = true;
+         settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
+         settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+         settings.ControlStyle.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
+     }).BindToXML(HttpContext.Current.Server.MapPath("~/App_Data/SideMenu2.xml"), "/menu/*").GetHtml()
+      <br />
+      <br />
+*@
 
-  
 
 
-</div>
+
+    </div>

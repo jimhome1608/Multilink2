@@ -34,6 +34,8 @@ namespace Multilink2.Models
         public string login_result;
         public string full_name;
         public int user_office_id;
+        public int user_id;
+        public string user_photo;
 
         public Boolean login()
         {
@@ -44,6 +46,7 @@ namespace Multilink2.Models
             using (OdbcCommand query = new OdbcCommand("", db.odbcConnection))
             {
                 //exec wl_login_3 'support@multilink.com.au','jc','',''
+                //FULL_NAME,USER_OFFICE_ID,USER_ID,USER_POSITION,USER_EMAIL,
                 query.CommandText = "exec wl_login_3 '" + UserName + "', '" + Password+ "','',''";                
                 OdbcDataReader reader = query.ExecuteReader();
                 if (reader.Read() == true)
@@ -58,26 +61,32 @@ namespace Multilink2.Models
                     {
                         full_name = reader.GetString(0);
                         user_office_id = reader.GetInt32(1);
-                    }
+                        user_id = reader.GetInt32(2);
+                        user_photo = "user_photo_" + user_id.ToString() + "_" + user_office_id.ToString()+".jpg";
+                    }                    
 
                 }
                 reader.Close();
-                query.CommandText = "select [USER_PHOTO] from users where [USER_ID] = 55 and [USER_OFFICE_ID] = 1";
-                reader = query.ExecuteReader();
-                if (reader.Read() == true)
+                if (_result == true)
                 {
-                    byte[] data = (byte[])reader[0]; //be careful here number 1 is 2nd column in DB (1st is picName, 2nd is Image)
-                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream(data))
+                    query.CommandText = String.Format("select [USER_PHOTO] from users where [USER_ID] = {0} and [USER_OFFICE_ID] = {1}", user_id, user_office_id);
+                    reader = query.ExecuteReader();
+                    if (reader.Read() == true)
                     {
-                        string user_photo = HttpContext.Current.Server.MapPath("~/images/user_photo.jpg");
-                        using (FileStream file = new FileStream(user_photo, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                        byte[] data = (byte[])reader[0]; //be careful here number 1 is 2nd column in DB (1st is picName, 2nd is Image)
+                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(data))
                         {
-                            file.Write(data,0, (int)data.Length);
+                            string path = HttpContext.Current.Server.MapPath("~/images/");
+                            // <img src="~/images/user_photo.jpg" width="100" />
+                           // user_photo = path + user_photo;
+                            using (FileStream file = new FileStream(path + user_photo, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                            {
+                                file.Write(data, 0, (int)data.Length);
+                            }
+                            user_photo = "/images/" + user_photo;
                         }
                     }
-                }
-
-
+                }                
             };
             db.close();
             return _result;
