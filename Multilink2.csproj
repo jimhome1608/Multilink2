@@ -160,6 +160,7 @@
     <Content Include="images\Menu.png" />
     <Content Include="images\Menu32.png" />
     <Content Include="images\mountain.jpg" />
+    <Content Include="images\user_no_photo.png" />
     <Content Include="images\user_photo.jpg" />
     <Content Include="images\user_photo_107_222.jpg" />
     <Content Include="Scripts\AjaxLogin.js" />

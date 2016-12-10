@@ -69,22 +69,31 @@ namespace Multilink2.Models
                 reader.Close();
                 if (_result == true)
                 {
-                    query.CommandText = String.Format("select [USER_PHOTO] from users where [USER_ID] = {0} and [USER_OFFICE_ID] = {1}", user_id, user_office_id);
+                    query.CommandText = String.Format("select IsNull(USER_PHOTO,'') as USER_PHOTO from users where [USER_ID] = {0} and [USER_OFFICE_ID] = {1}", user_id, user_office_id);
                     reader = query.ExecuteReader();
                     if (reader.Read() == true)
                     {
                         byte[] data = (byte[])reader[0]; //be careful here number 1 is 2nd column in DB (1st is picName, 2nd is Image)
-                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream(data))
+                        if (data.Length > 100)
                         {
-                            string path = HttpContext.Current.Server.MapPath("~/images/");
-                            // <img src="~/images/user_photo.jpg" width="100" />
-                           // user_photo = path + user_photo;
-                            using (FileStream file = new FileStream(path + user_photo, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                            using (System.IO.MemoryStream ms = new System.IO.MemoryStream(data))
                             {
-                                file.Write(data, 0, (int)data.Length);
+                                string path = HttpContext.Current.Server.MapPath("~/images/");
+                                // <img src="~/images/user_photo.jpg" width="100" />
+                                // user_photo = path + user_photo;
+                                using (FileStream file = new FileStream(path + user_photo, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                                {
+                                    file.Write(data, 0, (int)data.Length);
+                                }
+                                user_photo = "/images/" + user_photo;
+                                //user_photo = "<img src =\"" + user_photo + "\" width = \"100\" /> ";
                             }
-                            user_photo = "/images/" + user_photo;
                         }
+                        else
+                        {
+                            user_photo = "/images/user_no_photo.png";
+                        }
+                        
                     }
                 }                
             };

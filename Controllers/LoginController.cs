@@ -48,11 +48,9 @@ namespace Multilink2.Controllers
                     Session["user_photo"] = model.user_photo;                    
                     HttpCookie myCookie = new HttpCookie("multilink");
                     myCookie["UserName"] = model.UserName;
-                    myCookie["user_photo"] = model.user_photo;
                     myCookie.Expires = DateTime.Now.AddDays(14);
                     Response.Cookies.Add(myCookie);
                     ViewBag.user_full_name = Session["user_full_name"];
-                    ViewBag.user_photo = Session["user_photo"];
                     return Redirect(returnUrl ?? "~/Home/vwhowLongONREA/Sales");
                 }
                 ViewBag.ErrorMessage = model.login_result;
