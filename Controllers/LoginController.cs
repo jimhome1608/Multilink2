@@ -45,6 +45,11 @@ namespace Multilink2.Controllers
                     Session["multilink_login"] = "ok";
                     Session["user_full_name"] = model.full_name;
                     Session["user_office_id"] = model.user_office_id;
+                    if (model.user_office_id == 1)
+                        Session["show_support_menu"] = "yes";
+                    else
+                        Session["show_support_menu"] = "no";
+
                     Session["user_photo"] = model.user_photo;                    
                     HttpCookie myCookie = new HttpCookie("multilink");
                     myCookie["UserName"] = model.UserName;
@@ -56,6 +61,7 @@ namespace Multilink2.Controllers
                 ViewBag.ErrorMessage = model.login_result;
             }
             Session["multilink_login"] = "Nok";
+            Session["show_support_menu"] = "no";
             ViewBag.UserLocation = "Login";
             ViewBag.BaseLocation = "Welcome";
             return View(model);
@@ -67,6 +73,7 @@ namespace Multilink2.Controllers
         public ActionResult LogOff()
         {
             Session["multilink_login"] = "Nok";
+            Session["show_support_menu"] = "no";
             return Redirect("~/login/login");
         }
 
