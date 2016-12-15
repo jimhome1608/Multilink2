@@ -1,4 +1,4 @@
-
+    
 <style>
     .menu_heading {
        font-size:18px;
@@ -12,6 +12,11 @@
        background-color:teal;
        color:white;
     }
+    .Test {
+        content: '<span class="menu_heading"><i class="fa fa-home fa-fw"></i>Current Listing</span>';
+    }
+
+    
 </style>
 
 
@@ -42,26 +47,38 @@
        settings.ControlStyle.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
    }).BindToXML(HttpContext.Current.Server.MapPath("~/App_Data/SideMenu.xml"), "/menu/*").GetHtml()
         <br />
-        <br />
     @Html.ActionLink("Logout", "LogOff", "Login")
-    <br />
     <br />
   
     <img src=@Session["user_photo"] width="180" />
-    
- @*
-    @Html.DevExpress().Menu(settings =>
-     {
-         settings.Name = "LeftMenu1";
-         settings.Enabled = Session["multilink_login"] == "ok";
-         settings.EnableAdaptivity = true;
-         settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
-         settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
-         settings.ControlStyle.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
-     }).BindToXML(HttpContext.Current.Server.MapPath("~/App_Data/SideMenu2.xml"), "/menu/*").GetHtml()
+    <br />
+    @Session["user_office_id"]
+    <br />
+    @Session["user_office_id"] == "1"
+    <br />
+@if (Session["user_office_id"] == "1")
+{
+    <br />
+    <span class="menu_heading"><i class="fa fa-life-ring" aria-hidden="true"></i>Multilink Support</span>
+}
+     @Html.DevExpress().Menu(settings =>
+{
+    settings.Name = "LeftMenu1";
+    settings.ClientVisible = Session["multilink_login"] == "ok";
+    settings.Enabled = Session["multilink_login"] == "ok";
+    settings.EnableAdaptivity = true;
+    settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+    settings.ControlStyle.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
+    settings.Items.Add(item =>
+    {
+        item.Text = "Check Jobs";
+        item.NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Support", Action = "vwFindAgent" });        
+    });
+}).GetHtml()
       <br />
       <br />
-*@
+
 
 
 
