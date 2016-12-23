@@ -228,7 +228,7 @@
     <Content Include="Views\Home\ViewOnMap.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Inspections\ViewInspections.cshtml" />
-    <Content Include="Views\Support\vwFindAgent.cshtml" />
+    <Content Include="Views\Support\vwCheckJobs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -248,6 +248,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HexadecimalEncoding.cs" />
+    <Compile Include="Models\checkJobs.cs" />
     <Compile Include="Models\DB.cs" />
     <Compile Include="Models\howLongONREA.cs" />
     <Compile Include="Models\Inspections.cs" />

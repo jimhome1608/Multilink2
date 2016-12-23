@@ -27,6 +27,22 @@
        color:white;
        border-radius:5px 5px
     }
+    #errornode {
+       padding-left:10px;
+       padding-right:10px;
+       font-size:18px;
+       background-color:red;
+       color:white;
+       border-radius:5px 5px
+    }
+    #oknode {
+       padding-left:10px;
+       padding-right:10px;
+       font-size:18px;
+       background-color:darkgreen;
+       color:white;
+       border-radius:5px 5px
+    }
 
 </style>
 
@@ -73,7 +89,7 @@ else
     //settings.Collapsible = true;
     //settings.SettingsAdaptivity.CollapseAtWindowInnerWidth = 1023;
     settings.SettingsCollapsing.ExpandButton.GlyphType = PanelExpandButtonGlyphType.Auto;
-    settings.SettingsCollapsing.ExpandEffect = PanelExpandEffect.PopupToRight;
+    settings.SettingsCollapsing.ExpandEffect = PanelExpandEffect.Slide;
     //settings.Images.ExpandButton.Width = 32;
     //settings.Images.ExpandButton.Height = 32;
     //settings.Images.ExpandButton.Url = "/images/Menu32.png";

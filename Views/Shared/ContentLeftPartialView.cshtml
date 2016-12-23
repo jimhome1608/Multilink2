@@ -46,31 +46,42 @@
        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
        settings.ControlStyle.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
    }).BindToXML(HttpContext.Current.Server.MapPath("~/App_Data/SideMenu.xml"), "/menu/*").GetHtml()
-        <br />
-    @Html.ActionLink("Logout", "LogOff", "Login")
-    <br />
-  
-    <img src=@Session["user_photo"] width="180" />
-    <br />
-@if (Session["show_support_menu"] == "yes")
-{
-    <br />
-    <span class="menu_heading"><i class="fa fa-life-ring" aria-hidden="true"></i>&nbsp;Multilink Support</span>
-    @Html.DevExpress().Menu(settings =>
-{
-    settings.Name = "LeftMenu1";
-    settings.ClientVisible = Session["multilink_login"] == "ok";
-    settings.Enabled = Session["multilink_login"] == "ok";
-    settings.EnableAdaptivity = true;
-    settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
-    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
-    settings.ControlStyle.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
-    settings.Items.Add(item =>
+    @if (Session["show_support_menu"] == "yes")
     {
-        item.Text = "Check Jobs";
-        item.NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Support", Action = "vwFindAgent" });
-    });
-}).GetHtml()
-}
+        <br />
+        <span class="menu_heading"><i class="fa fa-life-ring" aria-hidden="true"></i>&nbsp;Multilink Support</span>
+        @Html.DevExpress().Menu(settings =>
+        {
+            settings.Name = "LeftMenu2";
+            settings.ClientVisible = Session["multilink_login"] == "ok";
+            settings.Enabled = Session["multilink_login"] == "ok";
+            settings.EnableAdaptivity = true;
+            settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
+            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+            settings.ControlStyle.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
+            settings.Items.Add(item =>
+            {
+                item.Text = "Check Jobs";
+                item.NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Support", Action = "vwCheckJobs" });
+            });
+        }).GetHtml()
+        <br />
+    }
+    <img src=@Session["user_photo"] width="180" />
+    @Html.DevExpress().Menu(settings =>
+        {
+            settings.Name = "LeftMenu1";
+            settings.Enabled = Session["multilink_login"] == "ok";
+            settings.EnableAdaptivity = true;
+            settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
+            settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+            settings.ControlStyle.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
+            settings.Items.Add(item =>
+            {
+                item.Text = "Logout";
+                item.NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Login", Action = "LogOff" });
+            });
+        }).GetHtml()
+   
 
     </div>

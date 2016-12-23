@@ -1,0 +1,32 @@
+﻿@using Multilink2.Models;
+@model List<CheckJobs>
+
+@foreach (var record in Model)
+            {
+    <DIV>        
+       <br /><span id="secondnode">@record.JobNameReadable  </span>        
+       @if (@record.NQR != 0)
+       {
+            <br /><span id="errornode">@record.StatusReport2  </span>;
+            <br /><span id="errornode">@record.StatusReport  </span>
+       }
+       else
+       {
+            <br /><span id = "oknode" > @record.StatusReport2 </span>;
+            <br /><span id="oknode">@record.StatusReport  </span>
+       };        
+        <br />@record.JobName
+        <br />@record.LastRunDate
+        <br />@record.lastRunTime
+        <br />@record.Enabled
+        <br />@record.JobID
+        <hr />
+        <br />
+    </DIV>
+}
+
+
+
+
+
+

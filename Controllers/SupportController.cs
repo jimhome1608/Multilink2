@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Multilink2.Models;
 
 namespace Multilink2.Controllers
 {
@@ -11,11 +12,13 @@ namespace Multilink2.Controllers
         //
         // GET: /Support/
 
-        public ActionResult vwFindAgent()
+        public ActionResult vwCheckJobs()
         {
-            ViewBag.UserLocation = "Find Agent";
+            List<CheckJobs> _list;
+            _list = CheckJobs.GetList();
+            ViewBag.UserLocation = "Check XML Jobs";
             ViewBag.BaseLocation = "Support";
-            return View();
+            return View(_list);
         }
 
     }
