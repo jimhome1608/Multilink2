@@ -71,8 +71,8 @@ namespace Multilink2.Models
                     _LastRun = new DateTime(_year, _month, _day, _hour, _minute,0);
                     TimeSpan duration = DateTime.Now - _LastRun;
                     double _LastRunMinutesAgo = duration.TotalMinutes;
-                    newRecord.StatusReport = String.Format("Last run/upload: {0:0} minutes ago at "+ _LastRun.ToString(), _LastRunMinutesAgo);
-                    if (_LastRunMinutesAgo < 30)
+                    newRecord.StatusReport = String.Format("Last run/upload: {0:0} minutes ago - "+ _LastRun.ToString(), _LastRunMinutesAgo);
+                    if (_LastRunMinutesAgo < 70)
                         newRecord.StatusReport2 = "All correct.  Job is running as expected";
                     else
                     {
