@@ -17,7 +17,7 @@ namespace Multilink2.Controllers
             List<CheckJobs> _list;
             _list = CheckJobs.GetList();
             ViewBag.UserLocation = "Check XML Jobs";
-            ViewBag.BaseLocation = "Support";
+            ViewBag.BaseLocation = "Multilink Support";
             return View(_list);
         }
 

@@ -1,31 +1,55 @@
 ﻿@using Multilink2.Models;
 @model List<CheckJobs>
 
-@foreach (var record in Model)
-            {
-    <DIV>        
-       <br /><span id="secondnode">@record.JobNameReadable  </span>        
-       @if (@record.NQR != 0)
-       {
-            <br /><span id="errornode">@record.StatusReport2  </span>;
-            <br /><span id="errornode">@record.StatusReport  </span>
-       }
-       else
-       {
-            <br /><span id = "oknode" > @record.StatusReport2 </span>;
-            <br /><span id="oknode">@record.StatusReport  </span>
-       };        
-        <br />@record.JobName
-        <br />@record.LastRunDate
-        <br />@record.lastRunTime
-        <br />@record.Enabled
-        <br />@record.JobID
-        <hr />
-    </DIV>
+<style>
+table {
+    border-collapse: collapse;
 }
 
+td {
+    padding-top: .5em;
+    padding-bottom: .5em;
+    padding-left: .5em;
+    padding-right: .5em;    
+}
+</style>
+
+<table class="table"  border="1">
 
 
+        @foreach (var item in Model)
+        {
+            if (item.NQR != 0)
+            {
+                <tr bgcolor="#FF0000">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JobNameReadable)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StatusReport2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StatusReport)
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr bgcolor="#CCFFE5">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JobNameReadable)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StatusReport2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StatusReport)
+                    </td>
+                </tr>
+            }
 
+        }
+
+</table>
 
 

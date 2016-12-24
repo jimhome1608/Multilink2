@@ -66,12 +66,14 @@ namespace Multilink2.Models
                     Int32.TryParse(newRecord.LastRunDate.Substring(4, 2), out _month);
                     Int32.TryParse(newRecord.LastRunDate.Substring(6, 2), out _day);                    
                     newRecord.lastRunTime = reader["lastRunTime"].ToString();
+                    if (newRecord.lastRunTime.Length < 6)
+                        newRecord.lastRunTime = "0"+newRecord.lastRunTime;
                     Int32.TryParse(newRecord.lastRunTime.Substring(0, 2), out _hour);
                     Int32.TryParse(newRecord.lastRunTime.Substring(2, 2), out _minute);
                     _LastRun = new DateTime(_year, _month, _day, _hour, _minute,0);
                     TimeSpan duration = DateTime.Now - _LastRun;
                     double _LastRunMinutesAgo = duration.TotalMinutes;
-                    newRecord.StatusReport = String.Format("Last run/upload: {0:0} minutes ago - "+ _LastRun.ToString(), _LastRunMinutesAgo);
+                    newRecord.StatusReport = String.Format("Last run/upload: {0:0} minutes ago ", _LastRunMinutesAgo);
                     if (_LastRunMinutesAgo < 70)
                         newRecord.StatusReport2 = "All correct.  Job is running as expected";
                     else
@@ -79,7 +81,6 @@ namespace Multilink2.Models
                         newRecord.NQR = 1;
                         newRecord.StatusReport2 = "Error/Warning.  This job is overdue and may have crashed or been disabled.";
                     }
-
                     newRecord.Enabled = reader["Enabled"].ToString();
                     newRecord.JobID = reader["JobID"].ToString();                    
                     checkJobsRecords.Add(newRecord);
