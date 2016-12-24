@@ -229,6 +229,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Inspections\ViewInspections.cshtml" />
     <Content Include="Views\Support\vwCheckJobs.cshtml" />
+    <Content Include="Views\Support\vwFindUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -250,6 +251,7 @@
     <Compile Include="Helpers\HexadecimalEncoding.cs" />
     <Compile Include="Models\checkJobs.cs" />
     <Compile Include="Models\DB.cs" />
+    <Compile Include="Models\FindUser.cs" />
     <Compile Include="Models\howLongONREA.cs" />
     <Compile Include="Models\Inspections.cs" />
     <Compile Include="Models\InternetEnquires.cs" />
