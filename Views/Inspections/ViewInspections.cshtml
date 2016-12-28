@@ -14,8 +14,26 @@
        border-radius:5px 5px;
        float:left; 
     }
+
+    .ofi_record {
+       padding-left:10px;
+       padding-right:10px;
+       padding-top:10px;
+       margin-bottom:10px;
+       margin-right:10px;
+       font-size:18px;
+       background-color:lightskyblue;
+       color:black;
+       border-radius:5px 5px;
+       text-align: left;
+       vertical-align: text-top;
+       border:2px solid darkgrey;
+       display:inline-block;
+    }
+
 </style>
 
+<script src="~/Scripts/bootstrap.min.js"></script>
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
 
@@ -29,6 +47,7 @@
         this.set = function (name, value) {
             window.localStorage.setItem(name, JSON.stringify(value));
         };
+
 
         this.clear = function () {
             window.localStorage.clear();
@@ -70,22 +89,30 @@
         //model.items.splice(0, 1);
         var ofi_name = document.getElementById ("ofi_name");
         show(document.querySelectorAll('#new-ofi-data'));
-        model['items'].push({"OFFICE_ID":"1","ID":"283527","USER_ID":"86","OFI_DATE":"10112016","OFI_IDX":"666","PHONE":"","NAME":ofi_name.value,"SURNAME":"Clark","PRICE":"","NOTES":"","RESULT":"","EMAIL":"","MY_NOTESPOTENTIAL_SELLER":null,"WANTS_SECT32":"0","INTERESTED":"0","MAYBE_INTERESTED":"0","NOT_INTERESTED":"0","ACTIVITY_TYPE":"Inspected"});
+        model['items'].push({"OFFICE_ID":"1","ID":"283527","USER_ID":"86","OFI_DATE":"10112016","OFI_IDX":"666","PHONE":"","NAME":ofi_name.value,"SURNAME":"Clark","PRICE":"","NOTES":"","INTERESTED":"","EMAIL":"","MY_NOTESPOTENTIAL_SELLER":null,"WANTS_SECT32":"0","INTERESTED":"0","INTERESTED":"0","INTERESTED":"0","ACTIVITY_TYPE":"Inspected"});
         saveModel();
 
         var ofi_data = document.getElementById ("ofi_show");
         var i = 0;
-        var _hmtl = "";
+        var _hmtl = ' ';
         for (i=0;i<1000;i++)
         {
             if (model.items[i] == null)
-                break;
-            _hmtl = _hmtl+
-                '<div class="buyer-full-name"> '+
-                model.items[i].NAME+" "+ model.items[i].SURNAME+
-                '</div>';
+                break; 
+            if (model.items[i].RESULT != 'INTERESTED' )
+            {
+                _hmtl = _hmtl+  '<div class="ofi_record"  style="background-color:lightgreen;">'+ model.items[i].NAME+" "+ model.items[i].SURNAME;
+                _hmtl = _hmtl +  '<br /><i class="fa fa-thumbs-o-up" style="font-size:23px;"></i>&nbsp;&nbsp;<i class="fa fa-file-text-o" style="font-size:23px;"></i>';
+            }
+            else
+            {
+                _hmtl = _hmtl+  '<div class="ofi_record"  style="background-color:lightskyblue;" >'+ model.items[i].NAME+" "+ model.items[i].SURNAME;
+                _hmtl = _hmtl +  '<br />&nbsp;';
+            }
+                
+            _hmtl = _hmtl +  '</div>' ;
         }
-        ofi_data.innerHTML= _hmtl;
+        ofi_data.innerHTML = _hmtl;
 
         var ofi_data = document.getElementById ("ofi_data");
         var jsonStr = JSON.stringify(model);

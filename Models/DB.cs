@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Odbc;
+using System.Configuration;
 
 namespace Multilink2.Models
 {
@@ -15,16 +16,10 @@ namespace Multilink2.Models
 
         public String open(string Connection = "MultilinkConnection")
         {
-            OdbcConnectionStringBuilder connectionString = new OdbcConnectionStringBuilder();
-            connectionString.Driver = "SQL Server";
-            connectionString["Server"] = "www.multilink.com.au";
-            connectionString["Dsn"] = "ProplinkServer";
-            connectionString["Uid"] = "sa";
-            connectionString["Pwd"] = "j3ig974h30";
-            //con = new OdbcConnection(@WebConfigurationManager.ConnectionStrings[Connection].ToString()); 
-            odbcConnection = new OdbcConnection(connectionString.ConnectionString);
+            String _connection = ConfigurationManager.ConnectionStrings["ProplinkServer"].ConnectionString;
+            odbcConnection = new OdbcConnection(_connection);
             try
-            {
+            {               
                 counter++;
                 if (odbcConnection.State.ToString() != "Open")
                 {
@@ -48,6 +43,7 @@ namespace Multilink2.Models
             try
             {
                 odbcConnection.Close();
+                odbcConnection.Dispose();
                 return "closed";
             }
             catch (Exception ex)
@@ -55,21 +51,6 @@ namespace Multilink2.Models
                 return ex.ToString();
             }
         }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing == true)
-            {
-                close();
-            }
-        }
-
 
     }
 }
