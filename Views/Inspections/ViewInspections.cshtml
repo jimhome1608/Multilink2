@@ -22,7 +22,7 @@
        margin-bottom:10px;
        margin-right:10px;
        font-size:18px;
-       background-color:lightskyblue;
+       background-color:lightyellow;
        color:black;
        border-radius:5px 5px;
        text-align: left;
@@ -81,14 +81,20 @@
         }
     }
 
-    function hideData() {
+    function hideEditDetails() {
         hide(document.querySelectorAll('#new-ofi-data'));
+        refreshExistingData();
+        show(document.querySelectorAll('#ofi_show'));
     }
 
-    function showData () {
-        //model.items.splice(0, 1);
-        var ofi_name = document.getElementById ("ofi_name");
+    function hideExistingData() {
+        hide(document.querySelectorAll('#ofi_show'));
         show(document.querySelectorAll('#new-ofi-data'));
+    }
+
+    function refreshExistingData () {
+        //model.items.splice(0, 1);
+        var ofi_name = document.getElementById ("ofi_name");        
         model['items'].push({"OFFICE_ID":"1","ID":"283527","USER_ID":"86","OFI_DATE":"10112016","OFI_IDX":"666","PHONE":"","NAME":ofi_name.value,"SURNAME":"Clark","PRICE":"","NOTES":"","INTERESTED":"","EMAIL":"","MY_NOTESPOTENTIAL_SELLER":null,"WANTS_SECT32":"0","INTERESTED":"0","INTERESTED":"0","INTERESTED":"0","ACTIVITY_TYPE":"Inspected"});
         saveModel();
 
@@ -99,26 +105,34 @@
         {
             if (model.items[i] == null)
                 break; 
-            if (model.items[i].RESULT != 'INTERESTED' )
+            //alert (model.items[i].RESULT);
+            if (model.items[i].INTERESTED != 0 )
             {
                 _hmtl = _hmtl+  '<div class="ofi_record"  style="background-color:lightgreen;">'+ model.items[i].NAME+" "+ model.items[i].SURNAME;
-                _hmtl = _hmtl +  '<br /><i class="fa fa-thumbs-o-up" style="font-size:23px;"></i>&nbsp;&nbsp;<i class="fa fa-file-text-o" style="font-size:23px;"></i>';
-            }
-            else
+                _hmtl = _hmtl +  '<br /><i class="fa fa-thumbs-o-up" style="font-size:20px;"></i>';
+                if (model.items[i].WANTS_SECT32 != 0 )
+                    _hmtl = _hmtl +  '</i>&nbsp;&nbsp;<i class="fa fa-file-text-o" style="font-size:20px;"></i>';
+                _hmtl = _hmtl +  '</div>' ;
+                continue;
+            }     
+            if (model.items[i].NOT_INTERESTED != 0 )
             {
-                _hmtl = _hmtl+  '<div class="ofi_record"  style="background-color:lightskyblue;" >'+ model.items[i].NAME+" "+ model.items[i].SURNAME;
-                _hmtl = _hmtl +  '<br />&nbsp;';
-            }
-                
+                _hmtl = _hmtl+  '<div class="ofi_record"  style="background-color:lightcoral;">'+ model.items[i].NAME+" "+ model.items[i].SURNAME;
+                _hmtl = _hmtl +  '<br /><i class="fa fa-thumbs-o-down" style="font-size:20px;"></i>';
+                _hmtl = _hmtl +  '</div>' ;
+                continue;
+            }         
+            _hmtl = _hmtl+  '<div class="ofi_record"  style="background-color:lightyellow;" >'+ model.items[i].NAME+" "+ model.items[i].SURNAME;
+            _hmtl = _hmtl +  '<br />&nbsp;';                
             _hmtl = _hmtl +  '</div>' ;
         }
         ofi_data.innerHTML = _hmtl;
 
-        var ofi_data = document.getElementById ("ofi_data");
-        var jsonStr = JSON.stringify(model);
-        var ofi_data_from_local_storage = window.localStorage.getItem(key_name);
-        ofi_data.innerHTML= "From Model<br />"+jsonStr+"<br />"+localStorage.length+"<br /><br />From Local Storage<br />"+
-            ofi_data_from_local_storage;
+       // var ofi_data = document.getElementById ("ofi_data");
+       // var jsonStr = JSON.stringify(model);
+       // var ofi_data_from_local_storage = window.localStorage.getItem(key_name);
+       // ofi_data.innerHTML= "From Model<br />"+jsonStr+"<br />"+localStorage.length+"<br /><br />From Local Storage<br />"+
+       //     ofi_data_from_local_storage;
 
     }
     
@@ -151,13 +165,14 @@
         padding-top: 10px;
     }
 </style>
-<body onload="showData()">
-    <button onclick="showData();">New</button>
-    <button onclick="saveData();">Hide</button>
-
+<body onload="hideEditDetails()">
+    <button onclick="hideExistingData();">New</button>
+    <button onclick="hideEditDetails();">Save</button>
+    <br />
     <div class="well" id="new-ofi-data"><input id="ofi_name" placeholder="Name" type="text" autocorrect="off" value=""><span class="material-input"></span></div>
+    <br />
     <div style="padding-left:10px;padding-bottom:10px" id="ofi_show">OFI Data....</div>
     <br /><br />
-    <div style="background-color:azure;padding-left:10px;padding-bottom:10px" id="ofi_data">OFI Data....</div>
+    <div style="background-color:azure;padding-left:10px;padding-bottom:10px" id="ofi_data"</div>
 
 

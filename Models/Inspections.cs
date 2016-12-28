@@ -75,8 +75,8 @@ namespace Multilink2.Models
                     newRecord.PRICE = reader["PRICE"].ToString();
                     newRecord.NOTES = reader["NOTES"].ToString();
                     newRecord.RESULT = reader["RESULT"].ToString();
-                    newRecord.EMAIL = reader["EMAIL"].ToString();
-                    // newRecord.MY_NOTESPOTENTIAL_SELLER = reader["MY_NOTESPOTENTIAL_SELLER"].ToString();
+                    //newRecord.RESULT = "Interested";
+                    //newRecord.MY_NOTESPOTENTIAL_SELLER = reader["MY_NOTESPOTENTIAL_SELLER"].ToString();
                     newRecord.WANTS_SECT32 = reader["WANTS_SECT32"].ToString();
                     newRecord.INTERESTED = reader["INTERESTED"].ToString();
                     newRecord.MAYBE_INTERESTED = reader["MAYBE_INTERESTED"].ToString();
