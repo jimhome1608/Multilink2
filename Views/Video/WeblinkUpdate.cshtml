@@ -1,38 +1,5 @@
-﻿
-<br />
-<button type="button" class="btn btn-success" onclick="playPause()">Play/Pause</button>
-<button type="button" class="btn btn-info" onclick="makeSmall()">Small</button>
-<button type="button" class="btn btn-info" onclick="makeNormal()">Medium</button>
-<button type="button" class="btn btn-info" onclick="makeBig()">Large</button>
-<br />
-<br />
-<video id="video1" width="1280">
-    <source src="~/video/NewWeblink.mp4" type="video/mp4" />
-    Your browser does not support HTML5 video.
-</video>
-</div>
-
-<script>
-var myVideo = document.getElementById("video1");
-
-function playPause() {
-    if (myVideo.paused)
-        myVideo.play();
-    else
-        myVideo.pause();
+﻿@{
+    Layout = null;
 }
 
-function makeBig() {
-    myVideo.width = 1280;
-}
-
-function makeSmall() {
-    myVideo.width = 490;
-}
-
-function makeNormal() {
-    myVideo.width = 768;
-}
-
-
-</script>
+<iframe width="1024" height="600" src="https://www.youtube.com/embed/ON833rjDmCM" frameborder="0" allowfullscreen></iframe>
