@@ -231,6 +231,7 @@
     <Content Include="Views\Inspections\ViewInspections.cshtml" />
     <Content Include="Views\Support\vwCheckJobs.cshtml" />
     <Content Include="Views\Support\vwFindUser.cshtml" />
+    <Content Include="Views\Video\WeblinkUpdate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -246,6 +247,7 @@
     <Compile Include="Controllers\InspectionsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SupportController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
